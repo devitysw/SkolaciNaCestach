@@ -2,128 +2,195 @@
 import logo from "../assets/logo.svg";
 ---
 
-<div class="w-full shadow-md py-4 z-50 fixed bg-white top-0">
-    <div class="w-[90%] max-w-[90%] mx-auto flex flex-row justify-between items-stretch uppercase z-50">
-        <a href=`${import.meta.env.BASE_URL}` >
-            <img src={logo.src} alt="Logo skoly" class="h-8 l:h-9 self-center" loading="lazy">
+<nav id="nav" class="bg-white shadow-md relative z-50 transition-all duration-300">
+  <div class="content">
+    <div class="flex items-center justify-between h-20">
+      
+      <div class="shrink-0 flex items-center">
+        <a href=`${import.meta.env.BASE_URL}`>
+            <img src={logo.src} alt="Logo skoly" class="h-12 l:h-14 self-center" loading="lazy">
         </a>
-        <div class="hidden lg:block self-center">
-            <div class="flex flex-row text-xs l:text-base">
-                <div class="dropdown-group">
-                    <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2">O NÁS</a>
-                    <div class="hidden absolute peer-hover:flex hover:flex w-max flex-col bg-white drop-shadow-lg z-50">
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-nas/zamestnanci/`>ZAMESTNANCI</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-nas/rada-skoly/`>RADA ŠKOLY</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-nas/rada-rodicov/`>RADA RODIČOV</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-nas/stanovy-rady-rodicov/`>STANOVY RR</a>
-                    </div>
-                </div>
-                <div class="dropdown-group">
-                    <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2">O ŠKOLE</a>
-                    <div class="hidden absolute peer-hover:flex hover:flex w-max flex-col bg-white drop-shadow-lg z-50">
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}aktuality/`>AKTUALITY</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/uspechy/`>Úspechy</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/duchovne-aktivity/`>duchovné aktivity</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/vkp/`>Výchovné a kariérne poradenstvo</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/spt/`>Školský podporný tím</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/ziacky-parlament/`>Žiacky parlament</a>
-                    </div>
-                </div>
-                <div class="dropdown-group">
-                    <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2">VOĽNÝ ČAS</a>
-                    <div class="hidden absolute peer-hover:flex hover:flex w-max flex-col bg-white drop-shadow-lg z-50">
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}volny-cas/skd/`>šKD</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}volny-cas/zus/`>zuš</a>
-                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}volny-cas/kruzky/`>KRÚŽKY</a>
-                    </div>
-                </div>
-                <div class="dropdown-group">
-                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href=`${import.meta.env.BASE_URL}kalendar/`>KALENDÁR</a>
-                </div>
-                <div class="dropdown-group">
-                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href=`${import.meta.env.BASE_URL}jedalen/`>JEDÁLEŇ</a>
-                </div>
-                <div class="dropdown-group">
-                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href=`${import.meta.env.BASE_URL}aktivity/`>GALÉRIA</a>
-                </div>
-                <div class="dropdown-group">
-                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href=`${import.meta.env.BASE_URL}kontakt/` >KONTAKT</a>
-                </div>
-                <div class="dropdown-group">
-                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href="https://ms.skolagorazd.sk" >MŠ</a>
+      </div>
+
+      <div class="hidden lg:flex items-center space-x-8">
+        
+        <div class="flex items-center space-x-2">
+          
+          <div class="group relative">
+            <button class="flex items-center gap-1 px-4 py-2 text-slate-800 font-medium rounded-md hover:bg-secondary hover:text-primary transition-colors">
+              Pobyty
+              <svg class="w-4 h-4 transform transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-0 w-48 bg-white rounded-md border border-primary shadow-xl opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
+              <a href={`${import.meta.env.BASE_URL}pobyty/skoly-v-prirode/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-t-md">Školy v prírode</a>
+              <a href={`${import.meta.env.BASE_URL}pobyty/lyziarske-kurzy/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary">Lyžiarske kurzy</a>
+              <a href={`${import.meta.env.BASE_URL}pobyty/turisticke-kurzy/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary">Turistické kurzy</a>
+            </div>
+          </div>
+
+          <div class="group relative">
+            <button class="flex items-center gap-1 px-4 py-2 text-slate-800 font-medium rounded-md hover:bg-secondary transition-colors">
+              Služby
+              <svg class="w-4 h-4 transform transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-xl opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50 border border-primary">
+              <a href={`${import.meta.env.BASE_URL}sluzby/animacny-program/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-t-md">Animačný program</a>
+              <a href={`${import.meta.env.BASE_URL}sluzby/skolkariq/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-b-md">ŠkôlkarIq</a>
+              <a href={`${import.meta.env.BASE_URL}sluzby/saso/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-b-md">Šašo</a>
+            </div>
+          </div>
+
+          <div class="group relative">
+            <button class="flex items-center gap-1 px-4 py-2 text-slate-800 font-medium rounded-md hover:bg-secondary transition-colors">
+              Informácie
+              <svg class="w-4 h-4 transform transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-xl opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50 border border-primary">
+              <a href={`${import.meta.env.BASE_URL}informacie/zakladne-informacie/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-t-md">Základné informácie</a>
+              <a href={`${import.meta.env.BASE_URL}informacie/kto-sme/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-b-md">Kto sme?</a>
+            </div>
+          </div>
+
+          <a href={`${import.meta.env.BASE_URL}kontakt/`} class="px-4 py-2 text-slate-800 font-medium rounded-md hover:bg-secondary transition-colors">Kontakt</a>
+        </div>
+
+      </div>
+
+      <div class="flex flex-row space-x-2">
+        <div class="flex flex-row items-center p-2 border border-primary xl:border-slate-200 xl:border-0 xl:border-l rounded-lg xl:rounded-none">
+            <div class="xl:hidden flex items-center">
+                <span class="material-symbols-rounded text-primary">
+                    call
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center justify-center gap-0.5 xl:p-0 xl:pl-2 text-sm xl:flex-row xl:gap-4 h-auto xl:h-full ">
+    
+                <a href="tel:+421900000000" class="flex items-center justify-center xl:flex-col text-center xl:text-right group/phone h-full xl:justify-center">
+                    <span class="hidden xl:inline text-xs text-slate-400 font-medium uppercase tracking-wider">Zavolajte nám</span>
+                    <span class="text-slate-800 font-bold group-hover/phone:text-primary transition-colors text-xs sm:text-sm xl:text-base">+421 900 000 000</span>
+                </a>
+                
+                <div class="flex flex-col text-center border-slate-100 w-full xl:w-auto xl:text-left xl:border-l-2 xl:border-primary xl:pl-3 h-full xl:justify-center">
+                    <span class="hidden xl:inline text-xs text-slate-400 font-medium uppercase tracking-wider">Otváracie hodiny</span>
+                    <span class="text-slate-500 font-medium text-[11px] sm:text-xs xl:text-sm xl:text-slate-600 xl:font-semibold">Po - Pia: 8:00 - 16:00</span>
                 </div>
             </div>
         </div>
 
-        <button id="menu-btn" class="block hamburger self-center lg:hidden focus:outline-hidden">
-            <span class="hamburger-top"></span>
-            <span class="hamburger-middle"></span>
-            <span class="hamburger-bottom"></span>
+        <div class="lg:hidden flex items-center">
+            <button id="menu-btn" class="p-2 rounded-md text-slate-600 hover:bg-secondary hover:text-primary focus:outline-none transition-colors" aria-label="Toggle Menu">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute top-20 left-0 w-full shadow-lg z-40 max-h-[calc(100vh-5rem)] overflow-y-auto">
+    <div class="px-4 pt-4 pb-6 space-y-3">
+      
+      <div>
+        <button data-mobile-dropdown-target="mob-1" class="w-full flex justify-between items-center py-2 text-slate-700 font-semibold border-b border-slate-50">
+          Pobyty
+          <svg class="arrow-icon w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
         </button>
-    </div>
-</div>
-
-<div id="menu" class="w-full h-screen hidden z-40 fixed backdrop-blur-xs">
-    <div class="bg-white font-semibold tracking-widest w-full py-4 z-50">
-        <div class="flex flex-col w-full">
-            <div class="dropdown-group w-full flex flex-col">
-                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href="#">O NÁS</a>
-                <div class="hidden peer-hover:flex hover:flex w-full flex-col bg-white font-normal">
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-nas/zamestnanci/`>ZAMESTNANCI</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-nas/rada-skoly/`>RADA ŠKOLY</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-nas/rada-rodicov/`>RADA RODIČOV</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-nas/stanovy-rady-rodicov/`>STANOVY RR</a>
-                </div>
-            </div>
-            <div class="dropdown-group w-full flex flex-col">
-                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right">O ŠKOLE</a>
-                <div class="hidden peer-hover:flex hover:flex w-full flex-col bg-white font-normal">
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}aktuality/`>AKTUALITY</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/uspechy/`>Úspechy</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/duchovne-aktivity/`>Duchovné aktivity</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/vkp/`>Výchovné a kariérne poradenstvo</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/spt/`>Školský podporný tím</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/ziacky-parlament/`>Žiacky parlament</a>
-                </div>
-            </div>
-            <div class="dropdown-group w-full flex flex-col">
-                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right">VOĽNÝ ČAS</a>
-                <div class="hidden peer-hover:flex hover:flex w-full flex-col bg-white font-normal">
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right"  href=`${import.meta.env.BASE_URL}volny-cas/skd/`>ŠKD</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right"  href=`${import.meta.env.BASE_URL}volny-cas/zus/`>ZUŠ</a>
-                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right"  href=`${import.meta.env.BASE_URL}volny-cas/kruzky/`>KRÚŽKY</a>
-                </div>
-            </div>
-            <div class="dropdown-group w-full flex flex-col">
-                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href=`${import.meta.env.BASE_URL}kalendar/`>KALENDÁR</a>
-            </div>
-            <div class="dropdown-group w-full flex flex-col">
-                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href=`${import.meta.env.BASE_URL}jedalen/`>JEDÁLEŇ</a>
-            </div>
-            <div class="dropdown-group w-full flex flex-col">
-                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href=`${import.meta.env.BASE_URL}aktivity/`>GALÉRIA</a>
-            </div>
-            <div class="dropdown-group w-full flex flex-col">
-                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href=`${import.meta.env.BASE_URL}kontakt/`>KONTAKT</a>
-            </div>
-            <div class="dropdown-group w-full flex flex-col">
-                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href="https://ms.skolagorazd.sk" >MŠ</a>
-            </div>
+        <div id="mob-1" class="hidden bg-secondary/40 pl-4 rounded-md mt-1">
+          <a href={`${import.meta.env.BASE_URL}pobyty/skoly-v-prirode/`} class="block py-2.5 text-sm text-slate-600 font-medium">Školy v prírode</a>
+          <a href={`${import.meta.env.BASE_URL}pobyty/lyziarske-kurzy/`} class="block py-2.5 text-sm text-slate-600 font-medium">Lyžiarske kurzy</a>
+          <a href={`${import.meta.env.BASE_URL}pobyty/turisticke-kurzy/`} class="block py-2.5 text-sm text-slate-600 font-medium">Turistické kurzy</a>
         </div>
+      </div>
+
+      <div>
+        <button data-mobile-dropdown-target="mob-2" class="w-full flex justify-between items-center py-2 text-slate-700 font-semibold border-b border-slate-50">
+          Služby 
+          <svg class="arrow-icon w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </button>
+        <div id="mob-2" class="hidden bg-secondary/40 pl-4 rounded-md mt-1">
+          <a href={`${import.meta.env.BASE_URL}sluzby/animacny-program/`} class="block py-2.5 text-sm text-slate-600 font-medium">Animačný program</a>
+          <a href={`${import.meta.env.BASE_URL}sluzby/skolkariq/`} class="block py-2.5 text-sm text-slate-600 font-medium">ŠkôlkarIq</a>
+          <a href={`${import.meta.env.BASE_URL}sluzby/saso/`} class="block py-2.5 text-sm text-slate-600 font-medium">Šašo</a>
+        </div>
+      </div>
+
+      <div>
+        <button data-mobile-dropdown-target="mob-3" class="w-full flex justify-between items-center py-2 text-slate-700 font-semibold border-b border-slate-50">
+          Informácie 
+          <svg class="arrow-icon w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </button>
+        <div id="mob-3" class="hidden bg-secondary/40 pl-4 rounded-md mt-1">
+          <a href={`${import.meta.env.BASE_URL}informacie/zakladne-informacie/`} class="block py-2.5 text-sm text-slate-600 font-medium">Základné informácie</a>
+          <a href={`${import.meta.env.BASE_URL}informacie/kto-sme/`} class="block py-2.5 text-sm text-slate-600 font-medium">Kto sme?</a>
+        </div>
+      </div>
+
+      <a href={`${import.meta.env.BASE_URL}kontakt/`} class="block py-2 text-slate-700 font-semibold border-b border-slate-50">Kontakt</a>
+
+      <div class="mt-6 pt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
+        <a href="tel:+421900000000" class="bg-secondary/60 p-3 rounded-lg flex flex-col">
+          <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Zavolajte nám</span>
+          <span class="text-sm text-text font-bold mt-0.5">+421 900 000</span>
+        </a>
+        <div class="bg-slate-50 p-3 rounded-lg flex flex-col border-l-2 border-primary">
+          <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Otvorené</span>
+          <span class="text-xs text-slate-600 font-bold mt-0.5">Po - Pia: 8 - 16</span>
+        </div>
+      </div>
+
     </div>
-</div>
+  </div>
+</nav>
 
 <script>
-    const btn = document.getElementById('menu-btn')
-    const nav = document.getElementById('menu')
+  // DOM selectors for core mobile structures
+  const btn = document.getElementById('menu-btn');
+  const nav = document.getElementById('menu');
 
-    function toggleMobileMenu() {
-        btn.classList.toggle('open');
-        nav.classList.toggle('hidden');
+  function toggleMobileMenu() {
+    btn.classList.toggle('open');
+    nav.classList.toggle('hidden');
+    
+    // REMOVED the dynamicOffset calculation that pushed the header down.
+    // The mobile menu drawer is absolute and positioned at 'top-20' (h-20 of navbar),
+    // so it will naturally drop down cleanly right under your logo.
+  }
 
-        var x = 1.5 * nav.clientHeight;
-        document.getElementById('nav').style.top = x + 'px';
-    }
-
+  // Bind container button clicks safely inside Astro scope
+  if (btn && nav) {
     btn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Dynamic targeting loops for declarative mobile accordion targets
+  const mobileDropdownButtons = document.querySelectorAll('[data-mobile-dropdown-target]');
+
+  mobileDropdownButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-mobile-dropdown-target');
+      const targetDropdown = document.getElementById(targetId);
+      const arrowIcon = button.querySelector('.arrow-icon');
+
+      if (targetDropdown) {
+        targetDropdown.classList.toggle('hidden');
+      }
+      if (arrowIcon) {
+        arrowIcon.classList.toggle('rotate-180');
+      }
+    });
+  });
 </script>
