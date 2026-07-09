@@ -1,0 +1,129 @@
+---
+import logo from "../assets/logo.svg";
+---
+
+<div class="w-full shadow-md py-4 z-50 fixed bg-white top-0">
+    <div class="w-[90%] max-w-[90%] mx-auto flex flex-row justify-between items-stretch uppercase z-50">
+        <a href=`${import.meta.env.BASE_URL}` >
+            <img src={logo.src} alt="Logo skoly" class="h-8 l:h-9 self-center" loading="lazy">
+        </a>
+        <div class="hidden lg:block self-center">
+            <div class="flex flex-row text-xs l:text-base">
+                <div class="dropdown-group">
+                    <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2">O NÁS</a>
+                    <div class="hidden absolute peer-hover:flex hover:flex w-max flex-col bg-white drop-shadow-lg z-50">
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-nas/zamestnanci/`>ZAMESTNANCI</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-nas/rada-skoly/`>RADA ŠKOLY</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-nas/rada-rodicov/`>RADA RODIČOV</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-nas/stanovy-rady-rodicov/`>STANOVY RR</a>
+                    </div>
+                </div>
+                <div class="dropdown-group">
+                    <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2">O ŠKOLE</a>
+                    <div class="hidden absolute peer-hover:flex hover:flex w-max flex-col bg-white drop-shadow-lg z-50">
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}aktuality/`>AKTUALITY</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/uspechy/`>Úspechy</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/duchovne-aktivity/`>duchovné aktivity</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/vkp/`>Výchovné a kariérne poradenstvo</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/spt/`>Školský podporný tím</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}o-skole/ziacky-parlament/`>Žiacky parlament</a>
+                    </div>
+                </div>
+                <div class="dropdown-group">
+                    <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2">VOĽNÝ ČAS</a>
+                    <div class="hidden absolute peer-hover:flex hover:flex w-max flex-col bg-white drop-shadow-lg z-50">
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}volny-cas/skd/`>šKD</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}volny-cas/zus/`>zuš</a>
+                        <a class="px-5 py-3 hover:bg-gray-200" href=`${import.meta.env.BASE_URL}volny-cas/kruzky/`>KRÚŽKY</a>
+                    </div>
+                </div>
+                <div class="dropdown-group">
+                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href=`${import.meta.env.BASE_URL}kalendar/`>KALENDÁR</a>
+                </div>
+                <div class="dropdown-group">
+                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href=`${import.meta.env.BASE_URL}jedalen/`>JEDÁLEŇ</a>
+                </div>
+                <div class="dropdown-group">
+                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href=`${import.meta.env.BASE_URL}aktivity/`>GALÉRIA</a>
+                </div>
+                <div class="dropdown-group">
+                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href=`${import.meta.env.BASE_URL}kontakt/` >KONTAKT</a>
+                </div>
+                <div class="dropdown-group">
+                    <a class="bg-transparent hover:bg-buttonYellow px-4 py-2" href="https://ms.skolagorazd.sk" >MŠ</a>
+                </div>
+            </div>
+        </div>
+
+        <button id="menu-btn" class="block hamburger self-center lg:hidden focus:outline-hidden">
+            <span class="hamburger-top"></span>
+            <span class="hamburger-middle"></span>
+            <span class="hamburger-bottom"></span>
+        </button>
+    </div>
+</div>
+
+<div id="menu" class="w-full h-screen hidden z-40 fixed backdrop-blur-xs">
+    <div class="bg-white font-semibold tracking-widest w-full py-4 z-50">
+        <div class="flex flex-col w-full">
+            <div class="dropdown-group w-full flex flex-col">
+                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href="#">O NÁS</a>
+                <div class="hidden peer-hover:flex hover:flex w-full flex-col bg-white font-normal">
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-nas/zamestnanci/`>ZAMESTNANCI</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-nas/rada-skoly/`>RADA ŠKOLY</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-nas/rada-rodicov/`>RADA RODIČOV</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-nas/stanovy-rady-rodicov/`>STANOVY RR</a>
+                </div>
+            </div>
+            <div class="dropdown-group w-full flex flex-col">
+                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right">O ŠKOLE</a>
+                <div class="hidden peer-hover:flex hover:flex w-full flex-col bg-white font-normal">
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}aktuality/`>AKTUALITY</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/uspechy/`>Úspechy</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/duchovne-aktivity/`>Duchovné aktivity</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/vkp/`>Výchovné a kariérne poradenstvo</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/spt/`>Školský podporný tím</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right" href=`${import.meta.env.BASE_URL}o-skole/ziacky-parlament/`>Žiacky parlament</a>
+                </div>
+            </div>
+            <div class="dropdown-group w-full flex flex-col">
+                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right">VOĽNÝ ČAS</a>
+                <div class="hidden peer-hover:flex hover:flex w-full flex-col bg-white font-normal">
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right"  href=`${import.meta.env.BASE_URL}volny-cas/skd/`>ŠKD</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right"  href=`${import.meta.env.BASE_URL}volny-cas/zus/`>ZUŠ</a>
+                    <a class="px-5 py-3 hover:bg-gray-200 w-full text-right"  href=`${import.meta.env.BASE_URL}volny-cas/kruzky/`>KRÚŽKY</a>
+                </div>
+            </div>
+            <div class="dropdown-group w-full flex flex-col">
+                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href=`${import.meta.env.BASE_URL}kalendar/`>KALENDÁR</a>
+            </div>
+            <div class="dropdown-group w-full flex flex-col">
+                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href=`${import.meta.env.BASE_URL}jedalen/`>JEDÁLEŇ</a>
+            </div>
+            <div class="dropdown-group w-full flex flex-col">
+                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href=`${import.meta.env.BASE_URL}aktivity/`>GALÉRIA</a>
+            </div>
+            <div class="dropdown-group w-full flex flex-col">
+                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href=`${import.meta.env.BASE_URL}kontakt/`>KONTAKT</a>
+            </div>
+            <div class="dropdown-group w-full flex flex-col">
+                <a class="peer bg-transparent hover:bg-buttonYellow px-4 py-2 w-full text-right" href="https://ms.skolagorazd.sk" >MŠ</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const btn = document.getElementById('menu-btn')
+    const nav = document.getElementById('menu')
+
+    function toggleMobileMenu() {
+        btn.classList.toggle('open');
+        nav.classList.toggle('hidden');
+
+        var x = 1.5 * nav.clientHeight;
+        document.getElementById('nav').style.top = x + 'px';
+    }
+
+    btn.addEventListener('click', toggleMobileMenu);
+</script>
