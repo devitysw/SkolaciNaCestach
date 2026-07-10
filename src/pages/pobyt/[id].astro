@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ProgramCard from '../../components/ProgramCard.astro';
+import { trips, extraPrograms } from '../../data/trips';
+
+export function getStaticPaths() {
+	return trips.map(trip => ({
+		params: { id: trip.id },
+		props: { trip },
+	}));
+}
+
+const { trip } = Astro.props;
+
+const includedIcons: Record<string, string> = {
+	'Ubytovanie': 'hotel',
+	'Strava': 'restaurant',
+	'Polpenzia': 'restaurant',
+	'Plná penzia': 'restaurant',
+	'Pedagogický dozor': 'school',
+	'Poistenie': 'verified_user',
+	'Vecné darčeky': 'card_giftcard',
+	'Skipas': 'downhill_skiing',
+	'Sprievodca': 'hiking',
+};
+
+const whatsIncluded = trip.included.map((item: string) => ({
+	label: item,
+	icon: includedIcons[item] ?? 'check_circle',
+}));
+
+const tripOptions = [
+	{
+		icon: 'forest',
+		title: 'Škola v prírode',
+		group: '1 skupina 25 - 35 detí',
+		dates: trip.type === 'priroda' ? trip.dates : 'máj - jún',
+		price: trip.type === 'priroda' ? trip.pricePerDay : 155,
+		originalPrice: trip.type === 'priroda' ? trip.originalPrice : undefined,
+	},
+	{
+		icon: 'downhill_skiing',
+		title: 'Lyžiarsky kurz',
+		group: '1 skupina 25 - 35 detí',
+		dates: trip.type === 'lyziarske' ? trip.dates : 'december - február',
+		price: trip.type === 'lyziarske' ? trip.pricePerDay : 155,
+		originalPrice: trip.type === 'lyziarske' ? trip.originalPrice : undefined,
+	},
+];
+---
+
+<Layout title={trip.name}>
+	<div class="relative h-72 md:h-96 overflow-hidden">
+		<img src={trip.image} alt={trip.name} class="w-full h-full object-cover" />
+		<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+		<div class="content absolute inset-0 flex items-center">
+			<div class="bg-white/95 rounded-xl p-6 max-w-md shadow-lg">
+				<h1 class="text-primary mb-2">{trip.name}</h1>
+				<p class="text-sm text-text/80">{trip.description}</p>
+			</div>
+		</div>
+	</div>
+
+	<section class="py-12 bg-white">
+		<div class="content grid grid-cols-1 md:grid-cols-3 gap-10">
+			<div class="md:col-span-2">
+				<h2 class="text-primary mb-4">Informácie o pobyte</h2>
+				<p class="text-text/80 mb-6">{trip.description}</p>
+
+				<div class="space-y-3 mb-8">
+					<div class="flex items-center gap-2">
+						<span class="material-symbols-rounded text-tint">calendar_today</span>
+						<span>{trip.dates}</span>
+					</div>
+					<div class="flex items-center gap-2">
+						<span class="material-symbols-rounded text-tint">location_on</span>
+						<span>{trip.location}</span>
+					</div>
+					<div class="flex items-center gap-2">
+						<span class="material-symbols-rounded text-tint">home</span>
+						<span>{trip.accommodationType}</span>
+					</div>
+				</div>
+
+				{trip.quote && (
+					<blockquote class="border-l-4 border-tint pl-4 italic text-primary mb-8">
+						"{trip.quote}"
+					</blockquote>
+				)}
+
+				<div class="card p-6">
+					<h3 class="text-primary mb-4">V cene je zahrnuté</h3>
+					<ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+						{whatsIncluded.map((item: {label: string, icon: string}) => (
+							<li class="flex items-center gap-3">
+								<span class="material-symbols-rounded text-primary">{item.icon}</span>
+								<span class="text-text/80">{item.label}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+
+			<div class="space-y-6">
+				<div class="section-mint rounded-xl p-6 text-center">
+					<span class="material-symbols-rounded text-tint text-3xl mb-2 block">card_giftcard</span>
+					<h3 class="text-primary mb-1">Bonus pre školy</h3>
+					<p class="text-sm text-text/80">Získajte bonus 130€ za každé 13. dieťa.</p>
+				</div>
+
+				<div>
+					<h3 class="text-primary mb-3">Fotogaléria</h3>
+					<div class="grid grid-cols-3 gap-2">
+						{trip.gallery.map((photo: string) => (
+							<img src={photo} alt={trip.name} class="w-full h-20 object-cover rounded-lg" loading="lazy" />
+						))}
+					</div>
+				</div>
+
+				{trip.mapUrl && (
+					<div>
+						<h3 class="text-primary mb-3">Poloha</h3>
+						<div class="w-full h-52 rounded-xl overflow-hidden">
+							<iframe
+								class="w-full h-full"
+								style="border:0"
+								loading="lazy"
+								src={trip.mapUrl}
+							></iframe>
+						</div>
+					</div>
+				)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-green">
+		<div class="content">
+			<h2 class="text-bg text-center mb-1">Možnosti výletov</h2>
+			<div class="underline-accent bg-tint mx-auto mb-8"></div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+				{tripOptions.map(option => (
+					<div class="bg-white/10 rounded-xl p-6">
+						<div class="flex items-center gap-3 mb-3">
+							<span class="material-symbols-rounded text-tint text-3xl">{option.icon}</span>
+							<h3 class="text-bg">{option.title}</h3>
+						</div>
+						<div class="text-sm text-bg/90 space-y-1 mb-3">
+							<p>{option.group}</p>
+							<p>{option.dates}</p>
+						</div>
+						<div class="flex items-center gap-2">
+							{option.originalPrice ? (
+								<>
+									<span class="text-bg/50 line-through text-sm">{option.originalPrice}&nbsp;€</span>
+									<span class="badge-tint">{option.price}&nbsp;€</span>
+								</>
+							) : (
+								<span class="font-bold text-bg">{option.price}&nbsp;€</span>
+							)}
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 bg-bg">
+		<div class="content">
+			<SectionHeading
+				title="Programy na výber"
+				subtitle="Doplňte si pobyt o niektorý z našich obľúbených programov."
+			/>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				{extraPrograms.map(program => (
+					<ProgramCard
+						name={program.name}
+						description={program.shortDescription}
+						image={program.image}
+						link={program.link}
+					/>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-green text-center">
+		<div class="content">
+			<h2 class="text-bg mb-1">Rezervujte si pobyt ešte dnes</h2>
+			<div class="underline-accent bg-tint mx-auto mb-6"></div>
+			<p class="text-bg/90 max-w-xl mx-auto mb-8">
+				Ak si ešte nie ste istí výberom, urobte si nezáväznú rezerváciu. Radi vám poskytneme všetky potrebné informácie a spolu nájdeme riešenie, ktoré bude pre vás aj vaše deti ideálne.
+			</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center">
+				<a href="tel:+421907205144" class="btn-primary">
+					<span class="material-symbols-rounded">call</span>
+					+421 907 205 144
+				</a>
+				<a href="mailto:rezervacie@skolacinacesty.sk" class="btn-outline">
+					<span class="material-symbols-rounded">mail</span>
+					rezervacie@skolacinacesty.sk
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

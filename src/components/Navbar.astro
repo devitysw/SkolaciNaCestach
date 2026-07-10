@@ -24,9 +24,8 @@ import logo from "../assets/logo.svg";
               </svg>
             </button>
             <div class="absolute left-0 mt-0 w-48 bg-white rounded-md border border-primary shadow-xl opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
-              <a href={`${import.meta.env.BASE_URL}pobyty/skoly-v-prirode/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-t-md">Školy v prírode</a>
-              <a href={`${import.meta.env.BASE_URL}pobyty/lyziarske-kurzy/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary">Lyžiarske kurzy</a>
-              <a href={`${import.meta.env.BASE_URL}pobyty/turisticke-kurzy/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary">Turistické kurzy</a>
+              <a href={`${import.meta.env.BASE_URL}pobyty/?filter=priroda`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-t-md">Školy v prírode</a>
+              <a href={`${import.meta.env.BASE_URL}pobyty/?filter=lyziarske`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-b-md">Lyžiarske kurzy</a>
             </div>
           </div>
 
@@ -53,7 +52,7 @@ import logo from "../assets/logo.svg";
             </button>
             <div class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-xl opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50 border border-primary">
               <a href={`${import.meta.env.BASE_URL}informacie/zakladne-informacie/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-t-md">Základné informácie</a>
-              <a href={`${import.meta.env.BASE_URL}informacie/kto-sme/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-b-md">Kto sme?</a>
+              <a href={`${import.meta.env.BASE_URL}o-nas/`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-b-md">Kto sme?</a>
             </div>
           </div>
 
@@ -72,14 +71,14 @@ import logo from "../assets/logo.svg";
 
             <div class="flex flex-col items-center justify-center gap-0.5 xl:p-0 xl:pl-2 text-sm xl:flex-row xl:gap-4 h-auto xl:h-full ">
     
-                <a href="tel:+421900000000" class="flex items-center justify-center xl:flex-col text-center xl:text-right group/phone h-full xl:justify-center">
+                <a href="tel:+421907205144" class="flex items-center justify-center xl:flex-col text-center xl:text-right group/phone h-full xl:justify-center">
                     <span class="hidden xl:inline text-xs text-slate-400 font-medium uppercase tracking-wider">Zavolajte nám</span>
-                    <span class="text-slate-800 font-bold group-hover/phone:text-primary transition-colors text-xs sm:text-sm xl:text-base">+421 900 000 000</span>
+                    <span class="text-slate-800 font-bold group-hover/phone:text-primary transition-colors text-xs sm:text-sm xl:text-base">+421 907 205 144</span>
                 </a>
-                
+
                 <div class="flex flex-col text-center border-slate-100 w-full xl:w-auto xl:text-left xl:border-l-2 xl:border-primary xl:pl-3 h-full xl:justify-center">
                     <span class="hidden xl:inline text-xs text-slate-400 font-medium uppercase tracking-wider">Otváracie hodiny</span>
-                    <span class="text-slate-500 font-medium text-[11px] sm:text-xs xl:text-sm xl:text-slate-600 xl:font-semibold">Po - Pia: 8:00 - 16:00</span>
+                    <span class="text-slate-500 font-medium text-[11px] sm:text-xs xl:text-sm xl:text-slate-600 xl:font-semibold">Po - Pia: 7:30 - 16:00</span>
                 </div>
             </div>
         </div>
@@ -107,9 +106,8 @@ import logo from "../assets/logo.svg";
           </svg>
         </button>
         <div id="mob-1" class="hidden bg-secondary/40 pl-4 rounded-md mt-1">
-          <a href={`${import.meta.env.BASE_URL}pobyty/skoly-v-prirode/`} class="block py-2.5 text-sm text-slate-600 font-medium">Školy v prírode</a>
-          <a href={`${import.meta.env.BASE_URL}pobyty/lyziarske-kurzy/`} class="block py-2.5 text-sm text-slate-600 font-medium">Lyžiarske kurzy</a>
-          <a href={`${import.meta.env.BASE_URL}pobyty/turisticke-kurzy/`} class="block py-2.5 text-sm text-slate-600 font-medium">Turistické kurzy</a>
+          <a href={`${import.meta.env.BASE_URL}pobyty/?filter=priroda`} class="block py-2.5 text-sm text-slate-600 font-medium">Školy v prírode</a>
+          <a href={`${import.meta.env.BASE_URL}pobyty/?filter=lyziarske`} class="block py-2.5 text-sm text-slate-600 font-medium">Lyžiarske kurzy</a>
         </div>
       </div>
 
@@ -136,20 +134,20 @@ import logo from "../assets/logo.svg";
         </button>
         <div id="mob-3" class="hidden bg-secondary/40 pl-4 rounded-md mt-1">
           <a href={`${import.meta.env.BASE_URL}informacie/zakladne-informacie/`} class="block py-2.5 text-sm text-slate-600 font-medium">Základné informácie</a>
-          <a href={`${import.meta.env.BASE_URL}informacie/kto-sme/`} class="block py-2.5 text-sm text-slate-600 font-medium">Kto sme?</a>
+          <a href={`${import.meta.env.BASE_URL}o-nas/`} class="block py-2.5 text-sm text-slate-600 font-medium">Kto sme?</a>
         </div>
       </div>
 
       <a href={`${import.meta.env.BASE_URL}kontakt/`} class="block py-2 text-slate-700 font-semibold border-b border-slate-50">Kontakt</a>
 
       <div class="mt-6 pt-6 border-t border-slate-100 grid grid-cols-2 gap-4">
-        <a href="tel:+421900000000" class="bg-secondary/60 p-3 rounded-lg flex flex-col">
+        <a href="tel:+421907205144" class="bg-secondary/60 p-3 rounded-lg flex flex-col">
           <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Zavolajte nám</span>
-          <span class="text-sm text-text font-bold mt-0.5">+421 900 000</span>
+          <span class="text-sm text-text font-bold mt-0.5">+421 907 205 144</span>
         </a>
         <div class="bg-slate-50 p-3 rounded-lg flex flex-col border-l-2 border-primary">
           <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Otvorené</span>
-          <span class="text-xs text-slate-600 font-bold mt-0.5">Po - Pia: 8 - 16</span>
+          <span class="text-xs text-slate-600 font-bold mt-0.5">Po - Pia: 7:30 - 16</span>
         </div>
       </div>
 

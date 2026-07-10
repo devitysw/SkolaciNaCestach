@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+
+const infoBlocks = [
+	{
+		title: 'Ceny',
+		text: 'Všetky ceny sú stanovené vždy za pobyty začínajúce obedom v pondelok a končiace raňajkami v piatok. Ceny pri ŠVP sú uvedené pre žiakov ZŠ I. stupňa, ceny pre žiakov ZŠ II. stupňa (prípadne študentov SŠ) Vám poskytneme v prípade potreby. Ceny pri LK sú pre žiakov ZŠ II. stupňa a študentov SŠ.',
+	},
+	{
+		title: 'Pedagogický dozor',
+		text: 'Na 13 zúčastnených detí má jeden pedagóg pobyt zdarma. Zdravotník má pobyt zdarma pri minimálnom počte 35 detí.',
+	},
+	{
+		title: 'Bonus',
+		text: 'Za každé 13. dieťa obdržíte bonus vo výške 130 €.',
+	},
+	{
+		title: 'Doprava',
+		text: 'V prípade záujmu Vám zabezpečíme dopravu z miesta školy do určenej destinácie. Cena sa stanoví na základe vzdialenosti do zariadenia.',
+	},
+	{
+		title: 'Poistenie',
+		text: 'V prípade záujmu Vám zabezpečíme komplexné cestovné poistenie. Naša CK má uzavreté poistenie pre prípad úpadku.',
+	},
+	{
+		title: 'Lyžiarske kurzy',
+		text: 'V prípade nezjazdnosti lyžiarskych svahov počas LK Vás presunieme na iný termín alebo do iného zariadenia. Vo vyznačených lyžiarskych strediskách je skibus v cene skipasu. V našej ponuke nájdete zariadenia, kde je lyžiarske stredisko priamo na svahu.',
+	},
+];
+---
+
+<Layout title="Základné informácie pre školy">
+	<Hero title="Základné informácie pre školy" />
+
+	<section class="py-16 bg-white bg-topo">
+		<div class="content grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+			{infoBlocks.map(block => (
+				<div>
+					<h3 class="text-primary mb-1">{block.title}</h3>
+					<div class="underline-accent"></div>
+					<p class="text-text/80">{block.text}</p>
+				</div>
+			))}
+		</div>
+	</section>
+</Layout>

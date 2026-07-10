@@ -1,0 +1,25 @@
+---
+interface Props {
+	name: string;
+	description: string;
+	image: string;
+	link?: string;
+}
+
+const { name, description, image, link } = Astro.props;
+---
+
+<div class="card text-center h-full flex flex-col p-6">
+	<div class="h-32 mb-4 flex items-center justify-center">
+		<img src={image} alt={name} class="h-full w-full object-cover rounded-lg" loading="lazy" />
+	</div>
+
+	<h3 class="text-primary uppercase tracking-wide mb-3">{name}</h3>
+	<p class="text-sm text-text/80 mb-6 flex-grow">{description}</p>
+
+	{link && (
+		<a href={link} class="btn-secondary w-full">
+			Viac o službe
+		</a>
+	)}
+</div>

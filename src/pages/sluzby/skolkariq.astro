@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Layout title="ŠkôlkarIQ">
+	<Hero
+		title="Spoločenské hry so Škôlkariqom"
+		subtitle="Nezabudnuteľný zážitok, ktorý ich nielen zabaví, ale aj rozvinie"
+		cta={{ text: 'Mám záujem', href: '/kontakt/' }}
+		image="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=450&fit=crop"
+		imageAlt="Deti hrajúce spoločenskú hru"
+	/>
+
+	<section class="section-mint">
+		<div class="content max-w-3xl mx-auto text-center">
+			<span class="material-symbols-rounded text-primary text-4xl mb-4 block">psychology</span>
+			<p class="text-text/90">
+				Ponúkame vám riadené hranie – Einstein v prírode – rozvojový herný koncept občianskeho združenia ŠkôlkarIQ, ktoré využíva potenciál riadených spoločenských hier na podporu empatie, emocionálneho rastu, kognitívneho rozvoja a posilňovania sociálnych zručností. Vyškolené lektorky prídu za deťmi, pripravia pre nich výber spoločenských hier, ktoré upravia podľa veku, nálady aj schopností detí tak, aby sa zabavili naozaj všetci.
+			</p>
+		</div>
+	</section>
+
+	<section class="py-16 bg-white bg-topo">
+		<div class="content grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+			<div>
+				<h2 class="text-primary mb-1">Nehráme Človeče ani Monopoly</h2>
+				<div class="underline-accent mb-4"></div>
+				<p class="text-text/80 mb-4">
+					Siahame po moderných, nami na mieru upravených a pútavých hrách, ktoré zaujmú. Pátrame po líške, ktorá ukradla cukríky, snažíme sa prísť na to, ktoré zvieratko sa vykabalo do stredu koberca, alebo lietame na magnetickej metle, aby sme pomohli čarodejnici dostať sa ku komínu.
+				</p>
+				<p class="text-text/80 mb-4">
+					Hravou formou tak deti rozvíjajú napríklad schopnosť požiadať o pomoc, vypočuť si názor iných, trénujú pozornosť, trpezlivosť aj prijímanie víťazstiev a prehier. V neposlednom rade sa zabávajú.
+				</p>
+				<p class="text-text/80">
+					Každé naše stretnutie je iné, pretože hry prispôsobujeme skupine. Táto služba je určená výhradne pre školy v prírode.
+				</p>
+			</div>
+			<img
+				src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?w=600&h=450&fit=crop"
+				alt="Spoločenská hra detí"
+				class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover"
+				loading="lazy"
+			/>
+		</div>
+	</section>
+
+	<section class="section-green">
+		<div class="content grid grid-cols-1 md:grid-cols-3 gap-4">
+			{[
+				'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop',
+				'https://images.unsplash.com/photo-1560264280-88b68371db39?w=400&h=300&fit=crop',
+				'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=300&fit=crop'
+			].map(photo => (
+				<img src={photo} alt="Aktivita ŠkôlkarIQ" class="rounded-xl object-cover h-56 w-full" loading="lazy" />
+			))}
+		</div>
+	</section>
+
+	<section class="py-16 bg-white bg-topo text-center">
+		<div class="content max-w-2xl mx-auto">
+			<h2 class="text-primary mb-1">Cena programu</h2>
+			<div class="underline-accent mx-auto mb-6"></div>
+			<p class="text-text/80 mb-8">
+				Cena je individuálna – v prípade záujmu Vám ju stanovíme na základe počtu detí a vzdialenosti do miesta pobytu a po potvrdení dostupnosti potrebného počtu lektoriek.
+			</p>
+			<a href="/kontakt/" class="btn-primary">Mám záujem</a>
+		</div>
+	</section>
+</Layout>

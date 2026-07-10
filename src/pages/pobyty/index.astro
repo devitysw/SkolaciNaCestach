@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import TripCard from '../../components/TripCard.astro';
+import { trips } from '../../data/trips';
+
+const prirodaTrips = trips.filter(t => t.type === 'priroda');
+const lyziarskeTrips = trips.filter(t => t.type === 'lyziarske');
+---
+
+<Layout title="Pobyty">
+	<Hero
+		title="Vyberte si ten pravý výlet"
+		subtitle="Čakajú na vás zariadenia vhodné na školy v prírode a lyžiarske kurzy."
+	/>
+
+	<section class="py-12 bg-bg bg-topo">
+		<div class="content">
+			<!-- Filter Tabs -->
+			<div class="flex flex-wrap gap-2 mb-12 justify-center" id="trip-tabs">
+				<button
+					data-target="priroda"
+					class="tab-btn px-6 py-3 font-bold rounded-full transition-colors bg-tint text-white"
+				>
+					Školy v prírode
+				</button>
+				<button
+					data-target="lyziarske"
+					class="tab-btn px-6 py-3 font-bold rounded-full transition-colors bg-secondary/50 text-primary"
+				>
+					Lyžiarske kurzy
+				</button>
+			</div>
+
+			<!-- Trips Grid -->
+			<div data-panel="priroda" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{prirodaTrips.map(trip => (
+					<TripCard
+						id={trip.id}
+						name={trip.name}
+						location={trip.location}
+						pricePerDay={trip.pricePerDay}
+						originalPrice={trip.originalPrice}
+						image={trip.image}
+						dates={trip.dates}
+					/>
+				))}
+			</div>
+
+			<div data-panel="lyziarske" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{lyziarskeTrips.map(trip => (
+					<TripCard
+						id={trip.id}
+						name={trip.name}
+						location={trip.location}
+						pricePerDay={trip.pricePerDay}
+						originalPrice={trip.originalPrice}
+						image={trip.image}
+						dates={trip.dates}
+					/>
+				))}
+			</div>
+
+			<!-- Pagination -->
+			<div class="flex justify-center gap-2 mt-12">
+				<button class="w-10 h-10 flex items-center justify-center bg-secondary/40 hover:bg-secondary/60 text-primary rounded-full transition-colors">‹</button>
+				<button class="w-10 h-10 flex items-center justify-center bg-tint text-white rounded-full transition-colors">1</button>
+				<button class="w-10 h-10 flex items-center justify-center bg-secondary/40 hover:bg-secondary/60 text-primary rounded-full transition-colors">2</button>
+				<button class="w-10 h-10 flex items-center justify-center bg-secondary/40 hover:bg-secondary/60 text-primary rounded-full transition-colors">3</button>
+				<button class="w-10 h-10 flex items-center justify-center bg-secondary/40 hover:bg-secondary/60 text-primary rounded-full transition-colors">›</button>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<script>
+	const tabs = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+	const panels = document.querySelectorAll<HTMLDivElement>('[data-panel]');
+
+	function activateTab(target: string) {
+		tabs.forEach(t => {
+			const isActive = t.getAttribute('data-target') === target;
+			t.classList.toggle('bg-tint', isActive);
+			t.classList.toggle('text-white', isActive);
+			t.classList.toggle('bg-secondary/50', !isActive);
+			t.classList.toggle('text-primary', !isActive);
+		});
+
+		panels.forEach(panel => {
+			const isActive = panel.getAttribute('data-panel') === target;
+			panel.classList.toggle('hidden', !isActive);
+			panel.classList.toggle('grid', isActive);
+		});
+	}
+
+	tabs.forEach(tab => {
+		tab.addEventListener('click', () => {
+			activateTab(tab.getAttribute('data-target')!);
+		});
+	});
+
+	const requestedFilter = new URLSearchParams(window.location.search).get('filter');
+	if (requestedFilter === 'lyziarske') {
+		activateTab('lyziarske');
+	}
+</script>

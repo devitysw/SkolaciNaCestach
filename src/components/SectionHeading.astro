@@ -1,0 +1,21 @@
+---
+interface Props {
+	title: string;
+	subtitle?: string;
+	align?: 'center' | 'left';
+	light?: boolean;
+}
+
+const { title, subtitle, align = 'center', light = false } = Astro.props;
+const isCenter = align === 'center';
+---
+
+<div class={isCenter ? 'text-center' : 'text-left'}>
+	<h2 class={light ? 'text-bg' : 'text-primary'}>{title}</h2>
+	<div class={`underline-accent ${isCenter ? 'mx-auto' : ''} ${light ? 'bg-tint' : ''}`}></div>
+	{subtitle && (
+		<p class={`mb-8 ${isCenter ? 'max-w-2xl mx-auto' : ''} ${light ? 'text-bg/90' : 'text-text/80'}`}>
+			{subtitle}
+		</p>
+	)}
+</div>

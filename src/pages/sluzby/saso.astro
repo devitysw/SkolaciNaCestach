@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Layout title="Program so Šašom">
+	<Hero
+		title="Program so Šašom"
+		subtitle="Neopakovateľnú show s naším úžasným Šašom!"
+		cta={{ text: 'Mám záujem', href: '/kontakt/' }}
+		image="https://images.unsplash.com/photo-1502811735393-a50f1220f5e5?w=600&h=450&fit=crop"
+		imageAlt="Šašo pri detskom predstavení"
+	/>
+
+	<section class="section-mint">
+		<div class="content max-w-3xl mx-auto text-center">
+			<span class="material-symbols-rounded text-primary text-4xl mb-4 block">theater_comedy</span>
+			<p class="text-text/90">
+				Je to fantastický detský zabávač, ktorý šašovaním zabaví naraz deti aj dospelých. Šašo bude počas jednoduchej ale strhujúcej scénky loviť s deťmi Nema, Dory až po žraloka, alebo predstaví pštrosa so šteklivými nohami, či papagája Tukana, skákajúceho Flipa, zajka Daka, ktorého sa Šašo snaží prevychovať k slušnosti, alebo pre deti odmoderuje karneval s promenádou a diskotékou.
+			</p>
+		</div>
+	</section>
+
+	<section class="py-16 bg-white bg-topo text-center">
+		<div class="content max-w-2xl mx-auto">
+			<h2 class="text-primary mb-1">Cena programu</h2>
+			<div class="underline-accent mx-auto mb-6"></div>
+			<p class="text-text/80 mb-8">
+				Predstavenia sa dajú kombinovať. Cenu Vám v prípade záujmu stanovíme na základe počtu detí a vzdialenosti do miesta pobytu.
+			</p>
+			<a href="/kontakt/" class="btn-primary">Mám záujem</a>
+		</div>
+	</section>
+</Layout>

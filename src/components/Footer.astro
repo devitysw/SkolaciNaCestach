@@ -10,19 +10,19 @@ import ig from "../assets/ig-logo.svg";
             <div class="md:col-span-2">
                 <img
                     src={logo.src}
-                    alt="Logo školy"
+                    alt="Logo Školáci na cesty"
                     class="h-16 mx-auto md:ml-0"
                     loading="lazy"
                 />
                 <p class="mt-4 w-5/6 md:w-2/3 mx-auto md:ml-0 text-center md:text-left">
-                    Našim cieľom je, aby deti spoznali krásy Slovenska, zamilovali si prírodu a pohyb. <br>
+                    Naším cieľom je, aby deti spoznali krásy Slovenska, zamilovali si prírodu a pohyb. <br>
                     Ponúkame kvalitné ubytovanie, chutnú stravu a aktivity, ktoré zabavia aj obohatia školákov. <br>
                     Ku každej škole pristupujeme individuálne a pobyt prispôsobíme jej potrebám.
                 </p>
                 <div class="flex flex-row space-x-4 mt-4 w-max mx-auto md:ml-0">
-                    <div class="w-8 h-8 bg-lightGreen text-center flex items-stretch rounded-full">
+                    <div class="w-8 h-8 bg-secondary text-center flex items-stretch rounded-full">
                         <a class="self-center w-max mx-auto"
-                            href="https://zsmssvgorazd.edupage.org/"
+                            href="https://www.instagram.com/"
                             target="_blank" >
                             <img
                                 src={ig.src}
@@ -32,14 +32,14 @@ import ig from "../assets/ig-logo.svg";
                             />
                         </a>
                     </div>
-                    <div class="w-8 h-8 bg-lightGreen text-center flex items-stretch rounded-full" >
+                    <div class="w-8 h-8 bg-secondary text-center flex items-stretch rounded-full" >
                         <a
                             class="self-center w-max mx-auto"
-                            href="https://www.facebook.com/share/1BMwDkWjm8/"
+                            href="https://www.facebook.com/"
                             target="_blank" >
                             <img
                                 src={fb.src}
-                                alt="Instagram logo"
+                                alt="Facebook logo"
                                 class="h-8 w-8 mx-auto"
                                 loading="lazy"
                             />
@@ -49,64 +49,46 @@ import ig from "../assets/ig-logo.svg";
             </div>
             <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 sm:gap-2 mt-4 md:mt-0 w-full" >
                 <div class="w-max mx-auto md:ml-0 mt-8 sm:mt-0">
-                    <h1 class="text-center sm:text-left">Dôležité odkazy</h1>
+                    <h1 class="text-center sm:text-left">Služby</h1>
                     <div class="flex flex-col gap-2 mt-4">
-                        <a href="https://zsmssvgorazd.edupage.org/" target="_blank" class="animated-underline w-max mx-auto sm:ml-0" >Edupage</a>
-                        <a href=`${import.meta.env.BASE_URL}o-nas/rada-rodicov/` class="animated-underline w-max mx-auto sm:ml-0" >Rada rodičov</a >
+                        <a href=`${import.meta.env.BASE_URL}sluzby/saso/` class="animated-underline w-max mx-auto sm:ml-0" >Program so Šašom</a>
+                        <a href=`${import.meta.env.BASE_URL}sluzby/skolkariq/` class="animated-underline w-max mx-auto sm:ml-0" >ŠkôlkarIQ</a>
+                        <a href=`${import.meta.env.BASE_URL}sluzby/animacny-program/` class="animated-underline w-max mx-auto sm:ml-0" >Animačný program</a>
+                        <a href=`${import.meta.env.BASE_URL}informacie/zakladne-informacie/` class="animated-underline w-max mx-auto sm:ml-0" >Pre učiteľov</a>
                     </div>
                 </div>
                 <div class="w-max mx-auto md:ml-0 mt-8 sm:mt-0">
-                    <h1 class="text-center sm:text-left">Informácie</h1>
+                    <h1 class="text-center sm:text-left">Právne centrum</h1>
                     <div class="flex flex-col gap-2 mt-4">
-                        <a
-                            href=`${import.meta.env.BASE_URL}aktuality/${new Date().getFullYear().toString()}/`
-                            class="animated-underline w-max mx-auto sm:ml-0"
-                            >Aktuality</a >
-                        <a
-                            href=`${import.meta.env.BASE_URL}kalendar/`
-                            class="animated-underline w-max mx-auto sm:ml-0"
-                            >Kalendár udalostí</a >
-                        <a
-                            href=`${import.meta.env.BASE_URL}prazdniny/`
-                            class="animated-underline w-max mx-auto sm:ml-0"
-                            >Prázdniny</a >
-                        <a
-                            href=`${import.meta.env.BASE_URL}zoznam-pomocok/`
-                            class="animated-underline w-max mx-auto sm:ml-0"
-                            >Zoznam pomôcok</a >
+                        <a href="#" class="animated-underline w-max mx-auto sm:ml-0" >Zásady ochrany osobných údajov</a>
+                        <a href="#" class="animated-underline w-max mx-auto sm:ml-0" >Zásady používania súborov Cookies</a>
                     </div>
                 </div>
                 <div class="w-max mx-auto md:ml-0 mt-8 sm:mt-0">
                     <h1 class="text-center sm:text-left">Kontakt</h1>
                     <div class="mt-4 w-full text-center sm:text-left">
-                        CZŠ s MŠ sv. Gorazda <br />
-                        Juhoslovanská 2 <br />
-                        040 13 Košice <br />
+                        Školáci na cesty s. r. o. <br />
+                        Landererova 7743/8 <br />
+                        Bratislava – Staré Mesto 811 09 <br />
+                        <br />
+                        po – pia: 7:30 – 16:00 <br />
+                        tel.: <a href="tel:+421907205144" class="animated-underline">+421 907 205 144</a> <br />
+                        mail: <a href="mailto:rezervacie@skolacinacesty.sk" class="animated-underline">rezervacie@skolacinacesty.sk</a>
                     </div>
-                    <a
-                        href=`${import.meta.env.BASE_URL}kontakt/`
-                        class="animated-underline w-max mx-auto sm:ml-0 mt-2"
-                    >Kontakt</a>
                 </div>
             </div>
         </div>
         <div
             class="w-full flex flex-col lg:flex-row justify-center lg:justify-between text-[0.5rem] lg:text-xs self-center text-center mt-4"
         >
-            <div>© 2023 Copyright CZŠ s MŠ Juhoslovanská 2, Košice</div>
+            <div>© {new Date().getFullYear()} Copyright Školáci na cesty CK</div>
             <div>
-                Vytvorené s 💙 pre školu od <a
+                Vytvorené s 💙 pre CK od <a
                     href="https://devity.sk/"
                     target="_blank"
                     class="animated-underline w-max">DEVITY Software</a
-                >&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Forografie a
-                ilustrácie: archív školy a <a
-                    href=`${import.meta.env.BASE_URL}credits/`
-                    class="animated-underline w-max mx-auto sm:ml-0">Freepik</a
-                > | <a
-                    href=`${import.meta.env.BASE_URL}admin/index.html`
-                    class="animated-underline w-max mx-auto sm:ml-0">Admin</a
-                >
+                >&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Fotografie a
+                ilustrácie: archív CK a Freepik
             </div>
         </div>
     </div>

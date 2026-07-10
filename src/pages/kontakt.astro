@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Kontakt">
+	<section class="py-12 bg-white bg-topo">
+		<div class="content grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+			<div>
+				<h1 class="text-primary mb-1">Máte otázky alebo potrebujete viac informácií?</h1>
+				<div class="underline-accent"></div>
+				<p class="text-text/80 mb-8 max-w-md">
+					Neváhajte nás kontaktovať – radi vám poradíme a spoločne nájdeme riešenie. Stačí nám napísať alebo zavolať a my sa Vám čo najskôr ozveme späť.
+				</p>
+
+				<div class="flex flex-col gap-4 max-w-sm">
+					<a href="tel:+421907205144" class="btn-outline">
+						<span class="material-symbols-rounded">call</span>
+						+421 907 205 144
+					</a>
+					<a href="mailto:rezervacie@skolacinacesty.sk" class="btn-outline">
+						<span class="material-symbols-rounded">mail</span>
+						rezervacie@skolacinacesty.sk
+					</a>
+				</div>
+			</div>
+
+			<div class="section-mint rounded-xl p-6 md:p-8">
+				<h2 class="text-primary mb-1">Kontaktný formulár</h2>
+				<div class="underline-accent mb-6"></div>
+
+				<form class="space-y-4">
+					<div>
+						<label for="name" class="block text-sm font-semibold text-text/80 mb-2">Meno Priezvisko</label>
+						<input
+							type="text"
+							id="name"
+							name="name"
+							required
+							placeholder="Jozef Novák"
+							class="w-full px-4 py-3 bg-white border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-tint"
+						/>
+					</div>
+
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+						<div>
+							<label for="email" class="block text-sm font-semibold text-text/80 mb-2">E-mailová adresa</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								required
+								placeholder="meno.priezvisko@mail.sk"
+								class="w-full px-4 py-3 bg-white border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-tint"
+							/>
+						</div>
+						<div>
+							<label for="phone" class="block text-sm font-semibold text-text/80 mb-2">Telefón</label>
+							<input
+								type="tel"
+								id="phone"
+								name="phone"
+								placeholder="+421 123 456 789"
+								class="w-full px-4 py-3 bg-white border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-tint"
+							/>
+						</div>
+					</div>
+
+					<div>
+						<label for="message" class="block text-sm font-semibold text-text/80 mb-2">Správa</label>
+						<textarea
+							id="message"
+							name="message"
+							required
+							rows="5"
+							placeholder="Dobrý deň, chcel by som sa informovať o..."
+							class="w-full px-4 py-3 bg-white border border-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-tint resize-none"
+						></textarea>
+					</div>
+
+					<button type="submit" class="btn-primary w-full">
+						Odoslať
+					</button>
+				</form>
+			</div>
+		</div>
+	</section>
+</Layout>

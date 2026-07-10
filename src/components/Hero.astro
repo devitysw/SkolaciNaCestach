@@ -1,0 +1,79 @@
+---
+interface Props {
+	title: string;
+	subtitle?: string;
+	cta?: {
+		text: string;
+		href: string;
+	};
+	image?: string;
+	images?: string[];
+	imageAlt?: string;
+}
+
+const { title, subtitle, cta, image, images, imageAlt = '' } = Astro.props;
+const hasVisual = Boolean(image || (images && images.length > 0));
+---
+
+<div class="bg-bg relative overflow-hidden">
+	<div class={`content py-14 md:py-20 relative z-10 ${hasVisual ? 'grid grid-cols-1 lg:grid-cols-2 gap-10 items-center' : 'text-center max-w-3xl mx-auto'}`}>
+		<div>
+			<h1 class="text-primary">{title}</h1>
+			<div class={`underline-accent ${hasVisual ? '' : 'mx-auto'}`}></div>
+
+			{subtitle && (
+				<p class={`text-text/80 mb-6 ${hasVisual ? 'max-w-md' : 'max-w-2xl mx-auto'}`}>{subtitle}</p>
+			)}
+
+			{cta && (
+				<a href={cta.href} class="btn-primary">
+					{cta.text}
+				</a>
+			)}
+		</div>
+
+		{images && images.length > 0 && (
+			<div class="relative h-72 md:h-80">
+				<img
+					src={images[0]}
+					alt={imageAlt}
+					class="absolute left-0 top-6 w-3/5 h-48 md:h-56 object-cover rounded-xl shadow-lg -rotate-2"
+					loading="lazy"
+				/>
+				{images[1] && (
+					<img
+						src={images[1]}
+						alt={imageAlt}
+						class="absolute right-0 top-0 w-2/5 h-32 md:h-36 object-cover rounded-xl shadow-lg rotate-2"
+						loading="lazy"
+					/>
+				)}
+				{images[2] && (
+					<img
+						src={images[2]}
+						alt={imageAlt}
+						class="absolute right-2 bottom-0 w-2/5 h-32 md:h-36 object-cover rounded-xl shadow-lg -rotate-1"
+						loading="lazy"
+					/>
+				)}
+				<span class="material-symbols-rounded absolute left-2 bottom-4 bg-secondary text-primary rounded-full w-11 h-11 flex items-center justify-center shadow-md text-2xl">
+					explore
+				</span>
+			</div>
+		)}
+
+		{image && !images && (
+			<div class="relative h-64 md:h-80">
+				<img
+					src={image}
+					alt={imageAlt}
+					class="w-full h-full object-cover rounded-xl shadow-lg"
+					loading="lazy"
+				/>
+				<span class="material-symbols-rounded absolute -top-3 -right-3 bg-white text-tint rounded-full w-11 h-11 flex items-center justify-center shadow-md text-2xl rotate-6">
+					photo_camera
+				</span>
+			</div>
+		)}
+	</div>
+</div>

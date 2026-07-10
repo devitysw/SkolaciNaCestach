@@ -1,0 +1,53 @@
+---
+interface Props {
+	id: string;
+	name: string;
+	location: string;
+	pricePerDay: number;
+	originalPrice?: number;
+	image: string;
+	dates: string;
+}
+
+const { id, name, location, pricePerDay, originalPrice, image, dates } = Astro.props;
+const isDiscounted = Boolean(originalPrice && originalPrice > pricePerDay);
+---
+
+<div class="card flex flex-col h-full">
+	<div class="relative h-44 overflow-hidden">
+		<img src={image} alt={name} class="w-full h-full object-cover" loading="lazy" />
+		{isDiscounted && (
+			<span class="badge-tint absolute top-3 right-3">Zľava</span>
+		)}
+	</div>
+
+	<div class="p-4 flex flex-col flex-grow">
+		<h3 class="text-primary mb-2">{name}</h3>
+
+		<div class="space-y-1.5 text-sm text-text/80 mb-3">
+			<div class="flex items-center gap-2">
+				<span class="material-symbols-rounded text-base text-tint">calendar_today</span>
+				<span>{dates}</span>
+			</div>
+			<div class="flex items-center gap-2">
+				<span class="material-symbols-rounded text-base text-tint">location_on</span>
+				<span>{location}</span>
+			</div>
+		</div>
+
+		<div class="mb-4 flex items-center gap-2 flex-grow">
+			{isDiscounted ? (
+				<>
+					<span class="text-sm text-text/40 line-through">{originalPrice}&nbsp;€</span>
+					<span class="badge-tint">{pricePerDay}&nbsp;€</span>
+				</>
+			) : (
+				<span class="font-bold text-text">{pricePerDay}&nbsp;€</span>
+			)}
+		</div>
+
+		<a href={`/pobyt/${id}/`} class="btn-secondary w-full">
+			Viac informácií
+		</a>
+	</div>
+</div>
