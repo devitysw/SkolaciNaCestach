@@ -8,21 +8,25 @@ interface Props {
 	};
 	image?: string;
 	images?: string[];
+	/** A pre-composed decorative graphic (e.g. an illustrated photo collage). Rendered as-is, with no cropping or badge overlay. */
+	graphic?: string;
 	imageAlt?: string;
 }
 
-const { title, subtitle, cta, image, images, imageAlt = '' } = Astro.props;
-const hasVisual = Boolean(image || (images && images.length > 0));
+const { title, subtitle, cta, image, images, graphic, imageAlt = '' } = Astro.props;
+const hasVisual = Boolean(image || graphic || (images && images.length > 0));
+
+import bg from "../assets/bg/hero.svg";
 ---
 
-<div class="bg-bg relative overflow-hidden">
+<div class="bg-bg relative overflow-hidden bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('${bg.src}')` }}>
 	<div class={`content py-14 md:py-20 relative z-10 ${hasVisual ? 'grid grid-cols-1 lg:grid-cols-2 gap-10 items-center' : 'text-center max-w-3xl mx-auto'}`}>
-		<div>
-			<h1 class="text-primary">{title}</h1>
-			<div class={`underline-accent ${hasVisual ? '' : 'mx-auto'}`}></div>
+		<div class={hasVisual ? 'order-2 lg:order-1 text-center lg:text-left' : ''}>
+			<h1 class="title text-primary">{title}</h1>
+			<div class={`underline-accent ${hasVisual ? 'mx-auto lg:mx-0' : 'mx-auto'}`}></div>
 
 			{subtitle && (
-				<p class={`text-text/80 mb-6 ${hasVisual ? 'max-w-md' : 'max-w-2xl mx-auto'}`}>{subtitle}</p>
+				<p class={`text-text/80 mb-6 ${hasVisual ? 'max-w-md mx-auto lg:mx-0' : 'max-w-2xl mx-auto'}`}>{subtitle}</p>
 			)}
 
 			{cta && (
@@ -33,7 +37,7 @@ const hasVisual = Boolean(image || (images && images.length > 0));
 		</div>
 
 		{images && images.length > 0 && (
-			<div class="relative h-72 md:h-80">
+			<div class="order-1 lg:order-2 relative h-72 md:h-80">
 				<img
 					src={images[0]}
 					alt={imageAlt}
@@ -63,8 +67,20 @@ const hasVisual = Boolean(image || (images && images.length > 0));
 			</div>
 		)}
 
-		{image && !images && (
-			<div class="relative h-64 md:h-80">
+		{graphic && (
+			<div class="order-1 lg:order-2 relative">
+				<img
+					src={graphic}
+					alt={imageAlt}
+					class="w-full h-auto max-w-md mx-auto lg:max-w-none"
+					loading="eager"
+					fetchpriority="high"
+				/>
+			</div>
+		)}
+
+		{image && !images && !graphic && (
+			<div class="order-1 lg:order-2 relative h-64 md:h-80">
 				<img
 					src={image}
 					alt={imageAlt}

@@ -22,8 +22,9 @@ h1, h2, h3, h4, h5, h6, .titleFont, .title {
     font-weight: 700 !important;
 }
 
-.title { 
-    @apply text-[2rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem];
+.title {
+    @apply text-[2rem]! sm:text-[3rem]! md:text-[3.5rem]! lg:text-[4rem]!;
+    line-height: 1.05;
 }
 h1 { font-size: 2rem !important; }
 h2 { font-size: 1.741rem !important; }
@@ -54,7 +55,7 @@ h6 { font-size: 1.0rem !important; }
 }
 
 .content {
-    @apply w-[90%] max-w-[90%] lg:w-[85%] xl:w-[80%] xl:max-w-[80%] mx-auto;
+    @apply w-[90%] max-w-[90%] lg:w-[85%] xl:w-[80%] mx-auto lg:max-w-7xl;
 }
 
 .my-shadow {

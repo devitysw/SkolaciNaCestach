@@ -6,6 +6,7 @@ import TripCard from '../components/TripCard.astro';
 import ProgramCard from '../components/ProgramCard.astro';
 import SlovakiaMap from '../components/SlovakiaMap.astro';
 import { trips, extraPrograms } from '../data/trips';
+import heroPhoto from '../assets/hero-photo.webp';
 
 const featuredTrips = trips.slice(0, 3);
 
@@ -27,11 +28,7 @@ const benefits = [
 		title="Zážitkové učenie mimo školských lavíc"
 		subtitle="Kompletná organizácia školských výletov a pobytov s individuálnym prístupom."
 		cta={{ text: 'Ponuka výletov', href: '/pobyty/' }}
-		images={[
-			'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=500&h=400&fit=crop',
-			'https://images.unsplash.com/photo-1471958680802-1345a694ba6d?w=400&h=300&fit=crop',
-			'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop'
-		]}
+		graphic={heroPhoto.src}
 		imageAlt="Deti na školskom výlete"
 	/>
 
