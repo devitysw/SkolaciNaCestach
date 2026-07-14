@@ -9,10 +9,14 @@ import { trips, extraPrograms } from '../data/trips';
 import heroPhoto from '../assets/hero-photo.webp';
 
 import bgMap from "../assets/bg/map.svg";
+import bgtrips from "../assets/bg/trips.svg";
 import mapDecor from "../assets/map.png";
+import decor from "../assets/decor-bush.svg";
+import decor2 from "../assets/decor-arrows.svg";
+
 import { map } from 'astro:schema';
 
-const featuredTrips = trips.slice(0, 3);
+const featuredTrips = trips.slice(0, 6);
 
 const benefits = [
 	{ icon: 'account_balance_wallet', label: 'Transparentný účet' },
@@ -51,7 +55,7 @@ const benefits = [
 	</section>
 
 	<!-- Featured Trips Section -->
-	<section class="py-16 bg-bg">
+	<section class="py-16 bg-contain bg-repeat bg-center relative" style={{ backgroundImage: `url('${bgtrips.src}')` }}>
 		<div class="content">
 			<SectionHeading
 				title="Vyberte si ten pravý výlet"
@@ -78,6 +82,8 @@ const benefits = [
 				</a>
 			</div>
 		</div>
+		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
+		<img src={decor2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
 	</section>
 
 	<!-- Info Section -->
