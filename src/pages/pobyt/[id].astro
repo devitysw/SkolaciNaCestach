@@ -47,12 +47,20 @@ const tripOptions = [
 		price: trip.type === 'lyziarske' ? trip.pricePerDay : 155,
 		originalPrice: trip.type === 'lyziarske' ? trip.originalPrice : undefined,
 	},
+	{
+		icon: 'hiking',
+		title: 'Turistický kurz',
+		group: '1 skupina 25 - 35 detí',
+		dates: trip.type === 'turisticky' ? trip.dates : 'máj - október',
+		price: trip.type === 'turisticky' ? trip.pricePerDay : 145,
+		originalPrice: trip.type === 'turisticky' ? trip.originalPrice : undefined,
+	},
 ];
 ---
 
-<Layout title={trip.name}>
+<Layout title={trip.name} description={trip.description} image={trip.image}>
 	<div class="relative h-72 md:h-96 overflow-hidden">
-		<img src={trip.image} alt={trip.name} class="w-full h-full object-cover" />
+		<img src={trip.image} alt={trip.name} class="w-full h-full object-cover" loading="eager" fetchpriority="high" />
 		<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
 		<div class="content absolute inset-0 flex items-center">
 			<div class="bg-white/95 rounded-xl p-6 max-w-md shadow-lg">
@@ -140,7 +148,7 @@ const tripOptions = [
 			<h2 class="text-bg text-center mb-1">Možnosti výletov</h2>
 			<div class="underline-accent bg-tint mx-auto mb-8"></div>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
 				{tripOptions.map(option => (
 					<div class="bg-white/10 rounded-xl p-6">
 						<div class="flex items-center gap-3 mb-3">

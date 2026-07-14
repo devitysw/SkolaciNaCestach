@@ -6,12 +6,16 @@ import { trips } from '../../data/trips';
 
 const prirodaTrips = trips.filter(t => t.type === 'priroda');
 const lyziarskeTrips = trips.filter(t => t.type === 'lyziarske');
+const turistickeTrips = trips.filter(t => t.type === 'turisticky');
 ---
 
-<Layout title="Pobyty">
+<Layout
+	title="Pobyty"
+	description="Vyberte si zo škôl v prírode, lyžiarskych a turistických kurzov v overených zariadeniach po celom Slovensku – Vysoké a Nízke Tatry, Stredné Slovensko a ďalšie regióny."
+>
 	<Hero
 		title="Vyberte si ten pravý výlet"
-		subtitle="Čakajú na vás zariadenia vhodné na školy v prírode a lyžiarske kurzy."
+		subtitle="Čakajú na vás zariadenia vhodné na školy v prírode, lyžiarske a turistické kurzy."
 	/>
 
 	<section class="py-12 bg-bg bg-topo">
@@ -29,6 +33,12 @@ const lyziarskeTrips = trips.filter(t => t.type === 'lyziarske');
 					class="tab-btn px-6 py-3 font-bold rounded-full transition-colors bg-secondary/50 text-primary"
 				>
 					Lyžiarske kurzy
+				</button>
+				<button
+					data-target="turisticky"
+					class="tab-btn px-6 py-3 font-bold rounded-full transition-colors bg-secondary/50 text-primary"
+				>
+					Turistické kurzy
 				</button>
 			</div>
 
@@ -49,6 +59,20 @@ const lyziarskeTrips = trips.filter(t => t.type === 'lyziarske');
 
 			<div data-panel="lyziarske" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 				{lyziarskeTrips.map(trip => (
+					<TripCard
+						id={trip.id}
+						name={trip.name}
+						location={trip.location}
+						pricePerDay={trip.pricePerDay}
+						originalPrice={trip.originalPrice}
+						image={trip.image}
+						dates={trip.dates}
+					/>
+				))}
+			</div>
+
+			<div data-panel="turisticky" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{turistickeTrips.map(trip => (
 					<TripCard
 						id={trip.id}
 						name={trip.name}
@@ -100,7 +124,7 @@ const lyziarskeTrips = trips.filter(t => t.type === 'lyziarske');
 	});
 
 	const requestedFilter = new URLSearchParams(window.location.search).get('filter');
-	if (requestedFilter === 'lyziarske') {
-		activateTab('lyziarske');
+	if (requestedFilter === 'lyziarske' || requestedFilter === 'turisticky') {
+		activateTab(requestedFilter);
 	}
 </script>

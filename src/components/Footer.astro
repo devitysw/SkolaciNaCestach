@@ -23,7 +23,7 @@ import ig from "../assets/ig-logo.svg";
                     <div class="w-8 h-8 bg-secondary text-center flex items-stretch rounded-full">
                         <a class="self-center w-max mx-auto"
                             href="https://www.instagram.com/"
-                            target="_blank" >
+                            target="_blank" rel="noopener noreferrer" >
                             <img
                                 src={ig.src}
                                 alt="Instagram logo"
@@ -36,7 +36,7 @@ import ig from "../assets/ig-logo.svg";
                         <a
                             class="self-center w-max mx-auto"
                             href="https://www.facebook.com/"
-                            target="_blank" >
+                            target="_blank" rel="noopener noreferrer" >
                             <img
                                 src={fb.src}
                                 alt="Facebook logo"
@@ -48,8 +48,8 @@ import ig from "../assets/ig-logo.svg";
                 </div>
             </div>
             <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 sm:gap-2 mt-4 md:mt-0 w-full" >
-                <div class="w-max mx-auto md:ml-0 mt-8 sm:mt-0">
-                    <h1 class="text-center sm:text-left">Služby</h1>
+                <div class="w-full max-w-max mx-auto md:ml-0 mt-8 sm:mt-0">
+                    <h2 class="text-center sm:text-left">Služby</h2>
                     <div class="flex flex-col gap-2 mt-4">
                         <a href=`${import.meta.env.BASE_URL}sluzby/saso/` class="animated-underline w-max mx-auto sm:ml-0" >Program so Šašom</a>
                         <a href=`${import.meta.env.BASE_URL}sluzby/skolkariq/` class="animated-underline w-max mx-auto sm:ml-0" >ŠkôlkarIQ</a>
@@ -57,15 +57,16 @@ import ig from "../assets/ig-logo.svg";
                         <a href=`${import.meta.env.BASE_URL}informacie/zakladne-informacie/` class="animated-underline w-max mx-auto sm:ml-0" >Pre učiteľov</a>
                     </div>
                 </div>
-                <div class="w-max mx-auto md:ml-0 mt-8 sm:mt-0">
-                    <h1 class="text-center sm:text-left">Právne centrum</h1>
+                <div class="w-full max-w-max mx-auto md:ml-0 mt-8 sm:mt-0">
+                    <h2 class="text-center sm:text-left">Právne centrum</h2>
                     <div class="flex flex-col gap-2 mt-4">
-                        <a href="#" class="animated-underline w-max mx-auto sm:ml-0" >Zásady ochrany osobných údajov</a>
-                        <a href="#" class="animated-underline w-max mx-auto sm:ml-0" >Zásady používania súborov Cookies</a>
+                        <a href=`${import.meta.env.BASE_URL}ochrana-osobnych-udajov/` class="animated-underline w-max mx-auto sm:ml-0" >Zásady ochrany osobných údajov</a>
+                        <a href=`${import.meta.env.BASE_URL}zasady-cookies/` class="animated-underline w-max mx-auto sm:ml-0" >Zásady používania súborov Cookies</a>
+                        <a href=`${import.meta.env.BASE_URL}obchodne-podmienky/` class="animated-underline w-max mx-auto sm:ml-0" >Všeobecné obchodné podmienky</a>
                     </div>
                 </div>
-                <div class="w-max mx-auto md:ml-0 mt-8 sm:mt-0">
-                    <h1 class="text-center sm:text-left">Kontakt</h1>
+                <div class="w-full max-w-max mx-auto md:ml-0 mt-8 sm:mt-0">
+                    <h2 class="text-center sm:text-left">Kontakt</h2>
                     <div class="mt-4 w-full text-center sm:text-left">
                         Školáci na cesty s. r. o. <br />
                         Landererova 7743/8 <br />
@@ -86,6 +87,7 @@ import ig from "../assets/ig-logo.svg";
                 Vytvorené s 💙 pre CK od <a
                     href="https://devity.sk/"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="animated-underline w-max">DEVITY Software</a
                 >&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Fotografie a
                 ilustrácie: archív CK a Freepik

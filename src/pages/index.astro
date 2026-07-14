@@ -4,15 +4,10 @@ import Hero from '../components/Hero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import TripCard from '../components/TripCard.astro';
 import ProgramCard from '../components/ProgramCard.astro';
+import SlovakiaMap from '../components/SlovakiaMap.astro';
 import { trips, extraPrograms } from '../data/trips';
 
 const featuredTrips = trips.slice(0, 3);
-
-const regions = [
-	{ name: 'Banská Belá', area: 'Stredné Slovensko' },
-	{ name: 'Liptovský Hrádok', area: 'Vysoké a Nízke Tatry' },
-	{ name: 'Košice a okolie', area: 'Východné Slovensko' },
-];
 
 const benefits = [
 	{ icon: 'account_balance_wallet', label: 'Transparentný účet' },
@@ -24,7 +19,10 @@ const benefits = [
 ];
 ---
 
-<Layout title="Domov">
+<Layout
+	title="Domov"
+	description="Školáci na cesty organizuje školy v prírode a lyžiarske kurzy pre základné školy na Slovensku. Kvalitné ubytovanie, strava a individuálny prístup ku každej triede."
+>
 	<Hero
 		title="Zážitkové učenie mimo školských lavíc"
 		subtitle="Kompletná organizácia školských výletov a pobytov s individuálnym prístupom."
@@ -32,7 +30,7 @@ const benefits = [
 		images={[
 			'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=500&h=400&fit=crop',
 			'https://images.unsplash.com/photo-1471958680802-1345a694ba6d?w=400&h=300&fit=crop',
-			'https://images.unsplash.com/photo-1503457574465-32a366916963?w=400&h=300&fit=crop'
+			'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop'
 		]}
 		imageAlt="Deti na školskom výlete"
 	/>
@@ -42,18 +40,10 @@ const benefits = [
 		<div class="content">
 			<SectionHeading
 				title="Kde sa začne vaše dobrodružstvo?"
-				subtitle="Pozrite si detaily našich preverených hotelov a stredísk."
+				subtitle="Kliknite na značku na mape a pozrite si detaily nášho pobytu."
 			/>
 
-			<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-				{regions.map(region => (
-					<div class="card p-6 text-center">
-						<span class="material-symbols-rounded text-tint text-4xl mb-2 block">location_on</span>
-						<h3 class="text-primary">{region.name}</h3>
-						<p class="text-sm text-text/70">{region.area}</p>
-					</div>
-				))}
-			</div>
+			<SlovakiaMap />
 		</div>
 	</section>
 
@@ -99,7 +89,7 @@ const benefits = [
 			</div>
 			<div>
 				<img
-					src="https://images.unsplash.com/photo-1427504494785-cdec0f72afa5?w=600&h=450&fit=crop"
+					src="https://images.unsplash.com/photo-1487730116645-74489c95b41b?w=600&h=450&fit=crop"
 					alt="Školáci na výlete"
 					class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover"
 					loading="lazy"

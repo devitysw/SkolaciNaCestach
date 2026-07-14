@@ -3,7 +3,7 @@ export interface Trip {
   name: string;
   location: string;
   region: string;
-  type: 'priroda' | 'lyziarske';
+  type: 'priroda' | 'lyziarske' | 'turisticky';
   pricePerDay: number;
   originalPrice?: number;
   image: string;
@@ -14,6 +14,8 @@ export interface Trip {
   gallery: string[];
   mapUrl?: string;
   included: string[];
+  /** Position on the Slovakia map (SlovakiaMap.astro), in the 0-800 x / 0-412 y viewBox space. */
+  mapPosition: { x: number; y: number };
 }
 
 export const trips: Trip[] = [
@@ -32,14 +34,15 @@ export const trips: Trip[] = [
     quote: 'Učíme sa hrou, kto nežije, nevie.',
     gallery: [
       'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1562546885-3606bca60dfa?w=400&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1520763185298-1b434c919eba?w=400&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1544160617-6f0308633ea9?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1500534623283-312aade485b7?w=400&h=300&fit=crop',
       'https://images.unsplash.com/photo-1519452575417-564c1401ecc0?w=400&h=300&fit=crop',
       'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=400&h=300&fit=crop'
     ],
     mapUrl: 'https://maps.google.com/maps?q=Bansk%C3%A1+Bel%C3%A1,+Slovensko&output=embed',
-    included: ['Ubytovanie', 'Strava', 'Pedagogický dozor', 'Poistenie', 'Vecné darčeky']
+    included: ['Ubytovanie', 'Strava', 'Pedagogický dozor', 'Poistenie', 'Vecné darčeky'],
+    mapPosition: { x: 266.2, y: 224.6 }
   },
   {
     id: 'borova-sihot',
@@ -48,17 +51,18 @@ export const trips: Trip[] = [
     region: 'Vysoké Tatry',
     type: 'priroda',
     pricePerDay: 155,
-    image: 'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=600&h=400&fit=crop',
     description: 'Nádherné prostredie v srdci lesov, priamo pod Tatrami. Ideálne miesto pre školy v prírode s bohatým programom aktivít v okolí.',
     dates: 'máj - jún',
     accommodationType: 'Chata',
     gallery: [
-      'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=400&h=300&fit=crop',
       'https://images.unsplash.com/photo-1470114716159-e389f8712fda?w=400&h=300&fit=crop',
       'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=400&h=300&fit=crop'
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
-    included: ['Ubytovanie', 'Strava', 'Pedagogický dozor', 'Poistenie']
+    included: ['Ubytovanie', 'Strava', 'Pedagogický dozor', 'Poistenie'],
+    mapPosition: { x: 419.7, y: 117.9 }
   },
   {
     id: 'chata-pod-ostrym-vrchom',
@@ -67,17 +71,18 @@ export const trips: Trip[] = [
     region: 'Nízke Tatry',
     type: 'priroda',
     pricePerDay: 155,
-    image: 'https://images.unsplash.com/photo-1415895706556-d69e66d50910?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=600&h=400&fit=crop',
     description: 'Útulná horská chata obklopená prírodou Nízkych Tatier, ideálna pre aktívne školy v prírode plné výletov a hier.',
     dates: 'máj - jún',
     accommodationType: 'Chata',
     gallery: [
-      'https://images.unsplash.com/photo-1415895706556-d69e66d50910?w=400&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1489375345405-edd50900baf0?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1487730116645-74489c95b41b?w=400&h=300&fit=crop',
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop'
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
-    included: ['Ubytovanie', 'Strava', 'Pedagogický dozor', 'Poistenie']
+    included: ['Ubytovanie', 'Strava', 'Pedagogický dozor', 'Poistenie'],
+    mapPosition: { x: 375.1, y: 118.5 }
   },
   {
     id: 'penzion-guldiner',
@@ -86,17 +91,18 @@ export const trips: Trip[] = [
     region: 'Stredné Slovensko',
     type: 'lyziarske',
     pricePerDay: 155,
-    image: 'https://images.unsplash.com/photo-1539713870563-08f40fcd0e95?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=600&h=400&fit=crop',
     description: 'Rodinný penzión priamo pod lyžiarskym svahom, vhodný pre lyžiarske kurzy všetkých úrovní.',
     dates: 'december - február',
     accommodationType: 'Penzión',
     gallery: [
-      'https://images.unsplash.com/photo-1539713870563-08f40fcd0e95?w=400&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1542401886-65d27afda266?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=400&h=300&fit=crop',
       'https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?w=400&h=300&fit=crop'
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
-    included: ['Ubytovanie', 'Polpenzia', 'Skipas', 'Sprievodca']
+    included: ['Ubytovanie', 'Polpenzia', 'Skipas', 'Sprievodca'],
+    mapPosition: { x: 398.6, y: 173.2 }
   },
   {
     id: 'x-bionic-hotel',
@@ -106,17 +112,18 @@ export const trips: Trip[] = [
     type: 'lyziarske',
     pricePerDay: 135,
     originalPrice: 155,
-    image: 'https://images.unsplash.com/photo-1551632786-de41ec16a41d?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1455587734955-081b22074882?w=600&h=400&fit=crop',
     description: 'Moderný hotelový komplex s wellness zázemím a vlastným lyžiarskym svahom priamo v areáli.',
     dates: 'december - február',
     accommodationType: 'Hotel',
     gallery: [
-      'https://images.unsplash.com/photo-1551632786-de41ec16a41d?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1455587734955-081b22074882?w=400&h=300&fit=crop',
       'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1571003123894-169f6ba55303?w=400&h=300&fit=crop'
+      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&h=300&fit=crop'
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
-    included: ['Ubytovanie', 'Plná penzia', 'Skipas', 'Sprievodca']
+    included: ['Ubytovanie', 'Plná penzia', 'Skipas', 'Sprievodca'],
+    mapPosition: { x: 434.3, y: 151.7 }
   },
   {
     id: 'hotel-lesana',
@@ -132,11 +139,32 @@ export const trips: Trip[] = [
     accommodationType: 'Hotel',
     gallery: [
       'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=400&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1455619452474-d2be0d4e5f0a?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?w=400&h=300&fit=crop',
       'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=400&h=300&fit=crop'
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
-    included: ['Ubytovanie', 'Polpenzia', 'Pedagogický dozor', 'Poistenie']
+    included: ['Ubytovanie', 'Polpenzia', 'Pedagogický dozor', 'Poistenie'],
+    mapPosition: { x: 362.0, y: 152.7 }
+  },
+  {
+    id: 'sliezsky-dom',
+    name: 'Sliezsky dom',
+    location: 'Štrbské Pleso',
+    region: 'Vysoké Tatry',
+    type: 'turisticky',
+    pricePerDay: 145,
+    image: 'https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=600&h=400&fit=crop',
+    description: 'Horská chata priamo na turistických chodníkoch Vysokých Tatier. Ideálne východisko pre turistický kurz s výstupmi na okolité štíty a plesá.',
+    dates: 'máj - október',
+    accommodationType: 'Horská chata',
+    gallery: [
+      'https://images.unsplash.com/photo-1533240332313-0db49b459ad6?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop'
+    ],
+    mapUrl: 'https://maps.google.com/maps?q=%C5%A0trbsk%C3%A9+Pleso,+Slovensko&output=embed',
+    included: ['Ubytovanie', 'Strava', 'Sprievodca', 'Poistenie'],
+    mapPosition: { x: 470, y: 100 }
   }
 ];
 
@@ -155,7 +183,7 @@ export const extraPrograms: ExtraProgram[] = [
     name: 'Animačný program',
     shortDescription: 'Profesionálni animátori pre zábavu a vzdelanie',
     description: 'Svoje programy stavajú na profesionálnych animátoroch, kvalitnom obsahu a individuálnom, láskavom prístupe k deťom.',
-    image: 'https://images.unsplash.com/photo-1427504494785-cdec0f72afa5?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=400&h=300&fit=crop',
     link: '/sluzby/animacny-program/'
   },
   {
@@ -163,7 +191,7 @@ export const extraPrograms: ExtraProgram[] = [
     name: 'Program so Šašom',
     shortDescription: 'Neopakovateľná show s naším úžasným Šašom',
     description: 'Fantastický detský zabávač, ktorý show zabaví naraz deti aj dospelých interaktívnou scénkou plnou zvieratiek.',
-    image: 'https://images.unsplash.com/photo-1502811735393-a50f1220f5e5?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=400&h=300&fit=crop',
     link: '/sluzby/saso/'
   },
   {

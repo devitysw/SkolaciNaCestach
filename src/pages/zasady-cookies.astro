@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout
+	title="Zásady používania súborov cookies"
+	description="Prehľad súborov cookies, ktoré webová stránka Školáci na cesty používa, ich účel a spôsob, akým si ich môžete v prehliadači spravovať."
+>
+	<Hero title="Zásady používania súborov cookies" />
+
+	<section class="py-12 bg-white bg-topo">
+		<div class="content max-w-3xl mx-auto text-text/80 space-y-10">
+			<p class="text-sm text-text/60">Platné od {new Date().getFullYear()}</p>
+
+			<div>
+				<h2 class="text-primary mb-1">1. Čo sú súbory cookies</h2>
+				<div class="underline-accent"></div>
+				<p>
+					Súbory cookies sú malé textové súbory, ktoré si webová stránka ukladá vo vašom prehliadači
+					pri jej návšteve. Slúžia na to, aby stránka fungovala správne, zapamätala si vaše nastavenia
+					a aby sme mohli sledovať, ako návštevníci stránku používajú.
+				</p>
+			</div>
+
+			<div>
+				<h2 class="text-primary mb-1">2. Aké cookies používame</h2>
+				<div class="underline-accent"></div>
+				<div class="overflow-x-auto">
+					<table class="w-full text-left border-collapse">
+						<thead>
+							<tr class="border-b-2 border-secondary">
+								<th class="py-2 pr-4 text-primary">Typ</th>
+								<th class="py-2 pr-4 text-primary">Účel</th>
+								<th class="py-2 text-primary">Platnosť</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="border-b border-secondary/60">
+								<td class="py-2 pr-4">Nevyhnutné</td>
+								<td class="py-2 pr-4">Zabezpečujú základnú funkčnosť stránky (napr. zobrazenie mobilného menu). Bez nich by stránka nefungovala správne.</td>
+								<td class="py-2">Relácia / do 1 roka</td>
+							</tr>
+							<tr class="border-b border-secondary/60">
+								<td class="py-2 pr-4">Analytické</td>
+								<td class="py-2 pr-4">Pomáhajú nám anonymne merať návštevnosť a používanie stránky, aby sme ju mohli vylepšovať.</td>
+								<td class="py-2">Do 2 rokov</td>
+							</tr>
+							<tr>
+								<td class="py-2 pr-4">Preferenčné</td>
+								<td class="py-2 pr-4">Zapamätajú si vaše voľby (napr. že ste už zatvorili cookie lištu).</td>
+								<td class="py-2">Do 1 roka</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div>
+				<h2 class="text-primary mb-1">3. Súhlas so súbormi cookies</h2>
+				<div class="underline-accent"></div>
+				<p>
+					Nevyhnutné cookies používame vždy, keďže bez nich by stránka nefungovala. Analytické a
+					preferenčné cookies používame len na základe vášho súhlasu, ktorý nám môžete udeliť alebo
+					odmietnuť pri prvej návšteve stránky prostredníctvom cookie lišty.
+				</p>
+			</div>
+
+			<div>
+				<h2 class="text-primary mb-1">4. Ako si cookies spravovať</h2>
+				<div class="underline-accent"></div>
+				<p>
+					Väčšina webových prehliadačov umožňuje cookies spravovať priamo vo svojich nastaveniach –
+					môžete si ich prezrieť, jednotlivo vymazať alebo blokovanie cookies úplne zapnúť. Upozorňujeme,
+					že zablokovaním niektorých cookies môže dôjsť k obmedzeniu funkčnosti stránky.
+				</p>
+			</div>
+
+			<div>
+				<h2 class="text-primary mb-1">5. Kontakt</h2>
+				<div class="underline-accent"></div>
+				<p>
+					V prípade otázok k používaniu súborov cookies nás môžete kontaktovať na
+					<a href="mailto:rezervacie@skolacinacesty.sk" class="animated-underline text-primary">rezervacie@skolacinacesty.sk</a>.
+					Viac o spracúvaní osobných údajov nájdete v
+					<a href="/ochrana-osobnych-udajov/" class="animated-underline text-primary">Zásadách ochrany osobných údajov</a>.
+				</p>
+			</div>
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,125 @@
+---
+import { trips } from '../data/trips';
+
+// Real geographic outline of Slovakia (equirectangular projection), viewBox 0 0 800 412.
+const SLOVAKIA_PATH = "M780,126.72L778.07,135.17L772.77,144.68L766.02,154.89L760.23,166.87L752.51,192.93L747.69,205.26L726.95,228.86L725.51,261.96L722.61,264.43L676.8,275.7L670.53,273.94L664.26,267.6L660.89,262.67L658.48,259.5L654.62,250.34L649.31,243.65L641.6,238.36L634.37,232.38L625.2,232.02L600.13,240.83L582.77,241.53L571.68,238.72L556.24,233.43L526.35,232.73L505.61,237.31L503.68,243.65L484.87,284.15L457.39,299.3L433.27,314.44L426.52,317.61L414.47,312.68L400.96,303.87L389.87,298.94L381.68,301.06L372.51,311.27L368.65,321.84L341.65,329.58L294.39,333.81L277.99,344.02L272.69,356.7L272.21,365.86L276.55,373.96L271.24,383.47L269.31,387.35L236.04,389.46L191.68,392.28L165.15,391.57L140.08,390.87L123.2,382.77L102.46,366.92L80.76,346.14L78.35,345.43L75.46,343.32L61.47,341.91L58.1,342.97L49.9,336.28L47.49,327.47L34.47,304.23L20,265.84L20,254.57L25.3,242.24L30.61,232.38L31.09,224.98L32.06,222.87L36.4,207.02L46.52,185.89L56.17,173.56L63.4,169.69L77.87,173.21L102.94,176.38L121.75,173.56L139.59,164.05L149.24,155.95L157.92,147.14L160.33,141.51L164.19,139.04L179.14,134.11L183.48,128.13L185.41,117.21L186.85,104.88L189.75,95.72L193.6,89.03L221.09,73.18L223.5,67.55L227.84,61.91L236.04,55.92L243.76,47.12L251.95,41.84L262.56,42.19L272.69,41.13L280.41,37.96L283.78,37.61L297.77,40.43L300.18,50.29L301.62,60.86L326.22,60.15L339.72,37.61L346.47,34.79L358.05,27.04L365.28,20L370.1,24.58L377.82,39.02L385.53,50.64L389.87,55.22L390.36,58.74L395.18,60.86L403.86,62.26L409.64,65.79L411.57,76.7L411.57,86.57L408.68,93.61L407.23,99.95L413.5,102.41L422.66,99.95L428.93,96.43L447.74,104.53L454.49,86.57L461.73,77.06L471.85,72.83L480.53,67.19L488.73,63.32L494.04,63.32L496.45,61.91L503.68,62.26L511.4,64.03L522.49,61.91L537.44,66.49L547.08,74.59L556.24,77.41L566.85,77.06L574.09,72.48L584.7,56.63L592.41,56.63L603.98,54.16L620.86,54.52L659.44,57.69L669.57,64.03L693.2,71.77L703.81,80.58L708.15,91.5L710.56,98.89L735.15,110.16L771.32,124.96L780,126.72Z";
+
+const VIEW_W = 800;
+const VIEW_H = 412;
+---
+
+<div class="relative w-full max-w-3xl mx-auto" style={`aspect-ratio: ${VIEW_W} / ${VIEW_H};`}>
+	<svg viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} class="absolute inset-0 w-full h-full" role="img" aria-label="Mapa Slovenska s lokalitami pobytov">
+		<path d={SLOVAKIA_PATH} class="fill-secondary/25 stroke-primary" stroke-width="3" stroke-linejoin="round" />
+	</svg>
+
+	{trips.map(trip => {
+		const xRatio = trip.mapPosition.x / VIEW_W;
+		// Anchor the popup so it always extends away from whichever map edge the pin is closest to.
+		const popupLeft = xRatio < 0.4 ? '0%' : xRatio > 0.6 ? '100%' : '50%';
+		const popupShiftX = xRatio < 0.4 ? '0%' : xRatio > 0.6 ? '-100%' : '-50%';
+
+		return (
+			<div
+				class="pin-wrapper absolute z-10"
+				style={`left:${(trip.mapPosition.x / VIEW_W * 100).toFixed(2)}%; top:${(trip.mapPosition.y / VIEW_H * 100).toFixed(2)}%;`}
+			>
+				<button
+					type="button"
+					class="map-pin-btn block -translate-x-1/2 -translate-y-full cursor-pointer"
+					aria-label={`Zobraziť informácie o ${trip.name}`}
+					aria-expanded="false"
+				>
+					<svg width="32" height="40" viewBox="0 0 24 32" class="drop-shadow-md hover:scale-110 transition-transform">
+						<path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20c0-6.6-5.4-12-12-12z" class="fill-tint" stroke="white" stroke-width="1.5" />
+						<circle cx="12" cy="12" r="5" fill="white" />
+					</svg>
+				</button>
+
+				<div
+					class="map-popup absolute w-44 sm:w-56 max-w-[calc(100vw-1.5rem)] bg-white rounded-xl shadow-xl border border-secondary/60 overflow-hidden"
+					style={`bottom: 48px; left: ${popupLeft}; --popup-shift-x: ${popupShiftX};`}
+				>
+					<img src={trip.image} alt={trip.name} class="w-full h-24 object-cover" loading="lazy" />
+					<div class="p-3">
+						<h3 class="text-primary leading-tight mb-1">{trip.name}</h3>
+						<div class="flex items-center gap-1 text-xs text-text/70 mb-3">
+							<span class="material-symbols-rounded text-sm text-tint">location_on</span>
+							{trip.location}
+						</div>
+						<a href={`/pobyt/${trip.id}/`} class="btn-secondary w-full text-sm py-1.5">
+							Viac informácií
+						</a>
+					</div>
+				</div>
+			</div>
+		);
+	})}
+</div>
+
+<style>
+	.map-popup {
+		opacity: 0;
+		visibility: hidden;
+		transform: translate(var(--popup-shift-x), 4px);
+		transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
+		pointer-events: none;
+	}
+
+	.pin-wrapper:focus-within .map-popup,
+	.map-popup.is-active {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(var(--popup-shift-x), 0);
+		pointer-events: auto;
+	}
+
+	/* Neighbouring pins sit only a few px apart, so an open popup can otherwise be
+	   covered by a nearby pin icon painting on top of it (same z-index, later in DOM).
+	   Lift the whole wrapper above its siblings while its popup is open. */
+	.pin-wrapper:focus-within,
+	.pin-wrapper:has(.map-popup.is-active) {
+		z-index: 50;
+	}
+
+	/* Real mouse hover only — touchscreens rely solely on the JS tap-toggle (.is-active)
+	   above, since iOS Safari can leave a stale :hover state after a tap that would
+	   otherwise fight with "tap outside to close". */
+	@media (hover: hover) and (pointer: fine) {
+		.pin-wrapper:hover .map-popup {
+			opacity: 1;
+			visibility: visible;
+			transform: translate(var(--popup-shift-x), 0);
+			pointer-events: auto;
+		}
+
+		.pin-wrapper:hover {
+			z-index: 50;
+		}
+	}
+</style>
+
+<script>
+	const wrappers = document.querySelectorAll<HTMLDivElement>('.pin-wrapper');
+
+	document.addEventListener('click', (e) => {
+		const target = e.target as HTMLElement;
+		const clickedWrapper = target.closest('.pin-wrapper');
+
+		wrappers.forEach(wrapper => {
+			const popup = wrapper.querySelector('.map-popup');
+			const btn = wrapper.querySelector('.map-pin-btn');
+			if (wrapper !== clickedWrapper) {
+				popup?.classList.remove('is-active');
+				btn?.setAttribute('aria-expanded', 'false');
+			}
+		});
+
+		if (clickedWrapper && target.closest('.map-pin-btn')) {
+			const popup = clickedWrapper.querySelector('.map-popup');
+			const btn = clickedWrapper.querySelector('.map-pin-btn');
+			const isNowActive = popup?.classList.toggle('is-active');
+			btn?.setAttribute('aria-expanded', String(Boolean(isNowActive)));
+		}
+	});
+</script>

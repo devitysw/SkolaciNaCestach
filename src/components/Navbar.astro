@@ -8,7 +8,7 @@ import logo from "../assets/logo.svg";
       
       <div class="shrink-0 flex items-center">
         <a href=`${import.meta.env.BASE_URL}`>
-            <img src={logo.src} alt="Logo skoly" class="h-12 l:h-14 self-center" loading="lazy">
+            <img src={logo.src} alt="Logo skoly" class="h-8 sm:h-10 md:h-12 lg:h-14 self-center" loading="eager">
         </a>
       </div>
 
@@ -25,7 +25,8 @@ import logo from "../assets/logo.svg";
             </button>
             <div class="absolute left-0 mt-0 w-48 bg-white rounded-md border border-primary shadow-xl opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
               <a href={`${import.meta.env.BASE_URL}pobyty/?filter=priroda`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-t-md">Školy v prírode</a>
-              <a href={`${import.meta.env.BASE_URL}pobyty/?filter=lyziarske`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-b-md">Lyžiarske kurzy</a>
+              <a href={`${import.meta.env.BASE_URL}pobyty/?filter=lyziarske`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary">Lyžiarske kurzy</a>
+              <a href={`${import.meta.env.BASE_URL}pobyty/?filter=turisticky`} class="block px-4 py-3 text-sm text-slate-800 hover:bg-secondary rounded-b-md">Turistické kurzy</a>
             </div>
           </div>
 
@@ -76,7 +77,7 @@ import logo from "../assets/logo.svg";
                     <span class="text-slate-800 font-bold group-hover/phone:text-primary transition-colors text-xs sm:text-sm xl:text-base">+421 907 205 144</span>
                 </a>
 
-                <div class="flex flex-col text-center border-slate-100 w-full xl:w-auto xl:text-left xl:border-l-2 xl:border-primary xl:pl-3 h-full xl:justify-center">
+                <div class="hidden min-[425px]:flex flex-col text-center border-slate-100 w-full xl:w-auto xl:text-left xl:border-l-2 xl:border-primary xl:pl-3 h-full xl:justify-center">
                     <span class="hidden xl:inline text-xs text-slate-400 font-medium uppercase tracking-wider">Otváracie hodiny</span>
                     <span class="text-slate-500 font-medium text-[11px] sm:text-xs xl:text-sm xl:text-slate-600 xl:font-semibold">Po - Pia: 7:30 - 16:00</span>
                 </div>
@@ -108,6 +109,7 @@ import logo from "../assets/logo.svg";
         <div id="mob-1" class="hidden bg-secondary/40 pl-4 rounded-md mt-1">
           <a href={`${import.meta.env.BASE_URL}pobyty/?filter=priroda`} class="block py-2.5 text-sm text-slate-600 font-medium">Školy v prírode</a>
           <a href={`${import.meta.env.BASE_URL}pobyty/?filter=lyziarske`} class="block py-2.5 text-sm text-slate-600 font-medium">Lyžiarske kurzy</a>
+          <a href={`${import.meta.env.BASE_URL}pobyty/?filter=turisticky`} class="block py-2.5 text-sm text-slate-600 font-medium">Turistické kurzy</a>
         </div>
       </div>
 
