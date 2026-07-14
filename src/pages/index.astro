@@ -10,9 +10,11 @@ import heroPhoto from '../assets/hero-photo.webp';
 
 import bgMap from "../assets/bg/map.svg";
 import bgtrips from "../assets/bg/trips.svg";
+import bgabout from "../assets/bg/about.svg";
 import mapDecor from "../assets/map.png";
 import decor from "../assets/decor-bush.svg";
 import decor2 from "../assets/decor-arrows.svg";
+import kids from "../assets/kids.png";
 
 import { map } from 'astro:schema';
 
@@ -41,7 +43,7 @@ const benefits = [
 	/>
 
 	<!-- Regions Section -->
-	<section class="py-16 bg-contain bg-primary bg-repeat bg-center relative" style={{ backgroundImage: `url('${bgMap.src}')` }}>
+	<section class="py-32 bg-contain bg-primary bg-repeat bg-center relative" style={{ backgroundImage: `url('${bgMap.src}')` }}>
 		<div class="content">
 			<SectionHeading
 				title="Kde sa začne vaše dobrodružstvo?"
@@ -55,7 +57,7 @@ const benefits = [
 	</section>
 
 	<!-- Featured Trips Section -->
-	<section class="py-16 bg-contain bg-repeat bg-center relative" style={{ backgroundImage: `url('${bgtrips.src}')` }}>
+	<section class="py-32 bg-contain bg-repeat bg-center relative" style={{ backgroundImage: `url('${bgtrips.src}')` }}>
 		<div class="content">
 			<SectionHeading
 				title="Vyberte si ten pravý výlet"
@@ -87,18 +89,17 @@ const benefits = [
 	</section>
 
 	<!-- Info Section -->
-	<section class="section-green">
+	<section class="py-32 bg-cover bg-primary bg-no-repeat bg-center relative" style={{ backgroundImage: `url('${bgabout.src}')` }}>
 		<div class="content grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-			<div>
-				<h2 class="text-bg mb-1">Sme tu pre radosť školákov a pohodu pedagógov</h2>
-				<div class="underline-accent bg-tint"></div>
-				<p class="text-bg/90">
-					Našim cieľom je, aby deti spoznali krásy Slovenska, zamilovali si prírodu a pohyb. Ponúkame kvalitné ubytovanie, chutnú stravu a aktivity, ktoré zabavia aj obohatia školákov. Ku každej škole pristupujeme individuálne a pobyt prispôsobíme jej potrebám.
-				</p>
-			</div>
+			<SectionHeading
+				title="Sme tu pre radosť školákov a pohodu pedagógov"
+				subtitle="Pokračujeme v tradícii CK Detská rekreácia, pozorovali sme Vaše  potreby, počúvali Vaše priania, k tomu pridávame niečo vlastné -  zaujímavé aktivity ako jedinečný herný koncept Einstein v prírode s občianskym združením ŠkôlkarIQ, či ozajstný zážitok - show s naším  fantastickým Šašom, ktorý rozosmeje deti aj dospelých. Ponúkame Vám aj  možnosť animácií s našimi skvelými animátormi."
+				align='left'
+				light
+			/>
 			<div>
 				<img
-					src="https://images.unsplash.com/photo-1487730116645-74489c95b41b?w=600&h=450&fit=crop"
+					src={kids.src}
 					alt="Školáci na výlete"
 					class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover"
 					loading="lazy"
