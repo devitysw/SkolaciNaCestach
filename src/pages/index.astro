@@ -156,20 +156,20 @@ const featuredTrips = trips.slice(0, 6);
 
 	<!-- Newsletter Section -->
 	<section class="py-16 bg-bg">
-		<div class="content max-w-xl">
+		<div class="content max-w-xl flex flex-col items-center">
 			<SectionHeading
 				title="Nenechajte si nič ujsť"
 				subtitle="Prihláste sa na odber noviniek, aby ste sa dozvedeli o nových ponukách a výhodných výletoch ako prví."
 			/>
 
-			<form class="flex flex-col sm:flex-row gap-3">
+			<form class="flex flex-col gap-3 w-full max-w-2xl">
 				<input
 					type="email"
 					placeholder="Vaša e-mailová adresa"
 					required
-					class="flex-grow px-4 py-3 border border-secondary rounded-full focus:outline-none focus:ring-2 focus:ring-tint"
+					class="grow px-4 py-3 border border-secondary rounded-full focus:outline-none focus:ring-2 focus:ring-tint w-full"
 				/>
-				<button type="submit" class="btn-primary whitespace-nowrap">
+				<button type="submit" class="btn-primary whitespace-nowrap max-w-full">
 					Prihlásiť sa
 				</button>
 			</form>
