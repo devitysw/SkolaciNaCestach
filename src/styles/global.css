@@ -159,7 +159,7 @@ button, a, .smooth-show {
 }
 
 .badge-tint {
-    @apply bg-tint text-white text-sm font-bold px-3 py-1 rounded-full;
+    @apply bg-tint text-white px-3 py-1 rounded-xl;
 }
 
 /* Decorative topographic background

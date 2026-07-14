@@ -11,39 +11,45 @@ interface Props {
 
 const { id, name, location, pricePerDay, originalPrice, image, dates } = Astro.props;
 const isDiscounted = Boolean(originalPrice && originalPrice > pricePerDay);
+
+import discount from "../assets/discount-badge.svg";
 ---
 
 <div class="card flex flex-col h-full">
-	<div class="relative h-44 overflow-hidden">
+	<div class="relative h-60 overflow-hidden">
 		<img src={image} alt={name} class="w-full h-full object-cover" loading="lazy" />
 		{isDiscounted && (
-			<span class="badge-tint absolute top-3 right-3">Zľava</span>
+			<img src={discount.src} alt="" class="absolute top-0 right-0"/>
 		)}
 	</div>
 
-	<div class="p-4 flex flex-col flex-grow">
-		<h3 class="text-primary mb-2">{name}</h3>
+	<div class="p-4 flex flex-col grow">
+		<h1 class="text-primary">{name}</h1>
+		<div class="underline-accent"></div>
 
-		<div class="space-y-1.5 text-sm text-text/80 mb-3">
+		<div class="space-y-2 text-text/80 mb-3 text-lg">
 			<div class="flex items-center gap-2">
-				<span class="material-symbols-rounded text-base text-tint">calendar_today</span>
+				<span class="material-symbols-rounded text-base text-text">calendar_today</span>
 				<span>{dates}</span>
 			</div>
 			<div class="flex items-center gap-2">
-				<span class="material-symbols-rounded text-base text-tint">location_on</span>
+				<span class="material-symbols-rounded text-base text-text">location_on</span>
 				<span>{location}</span>
 			</div>
 		</div>
 
-		<div class="mb-4 flex items-center gap-2 flex-grow">
-			{isDiscounted ? (
-				<>
-					<span class="text-sm text-text/40 line-through">{originalPrice}&nbsp;€</span>
-					<span class="badge-tint">{pricePerDay}&nbsp;€</span>
-				</>
-			) : (
-				<span class="font-bold text-text">{pricePerDay}&nbsp;€</span>
-			)}
+		<div class="flex items-center gap-2 mb-4">
+			<span class="material-symbols-rounded text-base text-text">account_balance_wallet</span>
+			<div class="flex items-center gap-2 grow text-2xl">
+				{isDiscounted ? (
+					<>
+						<span class=" text-text/40 line-through">{originalPrice}&nbsp;€</span>
+						<span class="badge-tint">{pricePerDay}&nbsp;€</span>
+					</>
+				) : (
+					<span class="text-text">{pricePerDay}&nbsp;€</span>
+				)}
+			</div>
 		</div>
 
 		<a href={`/pobyt/${id}/`} class="btn-secondary w-full">
