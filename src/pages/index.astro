@@ -13,6 +13,8 @@ import bgtrips from "../assets/bg/trips.svg";
 import bgabout from "../assets/bg/about.svg";
 import mapDecor from "../assets/map.png";
 import decor from "../assets/decor-bush.svg";
+import bush2 from "../assets/bush2.svg";
+import mountains from "../assets/mountains.svg";
 import decor2 from "../assets/decor-arrows.svg";
 import kids from "../assets/kids.png";
 
@@ -109,7 +111,7 @@ const benefits = [
 	</section>
 
 	<!-- Programs Section -->
-	<section class="py-16 sm:py-32 bg-bg">
+	<section class="py-16 sm:py-32 bg-contain bg-repeat bg-center relative" style={{ backgroundImage: `url('${bgtrips.src}')` }}>
 		<div class="content">
 			<SectionHeading
 				title="Programy na výber"
@@ -127,6 +129,8 @@ const benefits = [
 				))}
 			</div>
 		</div>
+		<img src={mountains.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
+		<img src={bush2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
 	</section>
 
 	<!-- Peace of mind Section -->

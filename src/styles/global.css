@@ -65,7 +65,7 @@ h6 { font-size: 1.149rem !important; }
 }
 
 button, a, .smooth-show {
-    transition: 1s;
+    transition: 0.5s;
     cursor: pointer;
 }
 
@@ -98,15 +98,41 @@ button, a, .smooth-show {
 --------------------------------------------------*/
 
 .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-tint hover:brightness-95 text-white font-bold py-3 px-8 rounded-full transition-colors;
+    @apply inline-flex items-center justify-center gap-2 bg-tint text-white font-bold py-3 px-8 rounded-full shadow-sm;
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform;
+    transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+.btn-primary:hover {
+    @apply shadow-md;
+    background-color: color-mix(in srgb, var(--color-tint) 88%, black);
+    transform: scale(1.03);
 }
 
 .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 bg-primary hover:brightness-110 text-bg font-bold py-3 px-8 rounded-full transition-colors;
+    @apply inline-flex items-center justify-center gap-2 bg-primary text-bg font-bold py-3 px-8 rounded-full shadow-sm;
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform;
+    transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+.btn-secondary:hover {
+    @apply shadow-md;
+    background-color: color-mix(in srgb, var(--color-primary) 88%, black);
+    transform: scale(1.03);
 }
 
 .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 border-2 border-tint text-tint hover:bg-tint hover:text-white font-bold py-3 px-8 rounded-full transition-colors;
+    @apply inline-flex items-center justify-center gap-2 border-2 border-tint text-tint font-bold py-3 px-8 rounded-full;
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform;
+    transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, color 200ms ease;
+}
+.btn-outline:hover {
+    @apply bg-tint text-white shadow-md;
+    transform: scale(1.03);
 }
 
 /* Sections
