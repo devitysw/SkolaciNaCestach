@@ -182,24 +182,24 @@ export const extraPrograms: ExtraProgram[] = [
     id: 'animacny-program',
     name: 'Animačný program',
     shortDescription: 'Profesionálni animátori pre zábavu a vzdelanie',
-    description: 'Svoje programy stavajú na profesionálnych animátoroch, kvalitnom obsahu a individuálnom, láskavom prístupe k deťom.',
-    image: 'https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=400&h=300&fit=crop',
+    description: 'Vyberte si našich osvedčených animátorov s pestrým animačným programom.',
+    image: './src/assets/animacny.svg',
     link: '/sluzby/animacny-program/'
   },
   {
     id: 'saso',
     name: 'Program so Šašom',
     shortDescription: 'Neopakovateľná show s naším úžasným Šašom',
-    description: 'Fantastický detský zabávač, ktorý show zabaví naraz deti aj dospelých interaktívnou scénkou plnou zvieratiek.',
-    image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=400&h=300&fit=crop',
+    description: 'Je to fantastický detský zabávač, ktorý šašovaním zabaví naraz deti aj dospelých.',
+    image: './src/assets/saso.svg',
     link: '/sluzby/saso/'
   },
   {
     id: 'skolkariq',
     name: 'Spoločenské hry so Škôlkariqom',
     shortDescription: 'Nezabudnuteľný zážitok, ktorý zabaví aj rozvinie',
-    description: 'Riadené hranie využívajúce potenciál spoločenských hier na podporu empatie, tvorivosti a kognitívneho rozvoja.',
-    image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400&h=300&fit=crop',
+    description: 'Nezabudnuteľný zážitok, ktorý deti nielen zabaví, ale aj rozvinie.',
+    image: './src/assets/skolkariq.svg',
     link: '/sluzby/skolkariq/'
   }
 ];
