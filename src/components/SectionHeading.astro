@@ -11,7 +11,7 @@ const isCenter = align === 'center';
 ---
 
 <div class={isCenter ? 'text-center' : 'text-left'}>
-	<h2 class={light ? 'text-bg' : 'text-primary'}>{title}</h2>
+	<h1 class={light ? 'text-bg' : 'text-primary'}>{title}</h1>
 	<div class={`underline-accent ${isCenter ? 'mx-auto' : ''} ${light ? 'bg-tint' : ''}`}></div>
 	{subtitle && (
 		<p class={`mb-8 ${isCenter ? 'max-w-2xl mx-auto' : ''} ${light ? 'text-bg/90' : 'text-text/80'}`}>

@@ -8,6 +8,10 @@ import SlovakiaMap from '../components/SlovakiaMap.astro';
 import { trips, extraPrograms } from '../data/trips';
 import heroPhoto from '../assets/hero-photo.webp';
 
+import bgMap from "../assets/bg/map.svg";
+import mapDecor from "../assets/map.png";
+import { map } from 'astro:schema';
+
 const featuredTrips = trips.slice(0, 3);
 
 const benefits = [
@@ -33,15 +37,17 @@ const benefits = [
 	/>
 
 	<!-- Regions Section -->
-	<section class="py-16 bg-white bg-topo">
+	<section class="py-16 bg-contain bg-primary bg-repeat bg-center relative" style={{ backgroundImage: `url('${bgMap.src}')` }}>
 		<div class="content">
 			<SectionHeading
 				title="Kde sa začne vaše dobrodružstvo?"
 				subtitle="Kliknite na značku na mape a pozrite si detaily nášho pobytu."
+				light
 			/>
 
 			<SlovakiaMap />
 		</div>
+		<img src={mapDecor.src} alt="Ilustrácia mapy" class="w-18 sm:w-24 md:w-48 h-auto absolute bottom-0 right-4 sm:right-8 translate-y-1/2">
 	</section>
 
 	<!-- Featured Trips Section -->

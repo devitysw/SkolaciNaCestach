@@ -26,12 +26,12 @@ h1, h2, h3, h4, h5, h6, .titleFont, .title {
     @apply text-[2rem]! sm:text-[3rem]! md:text-[3.5rem]! lg:text-[4rem]!;
     line-height: 1.05;
 }
-h1 { font-size: 2rem !important; }
-h2 { font-size: 1.741rem !important; }
-h3 { font-size: 1.516rem !important; }
-h4 { font-size: 1.320rem !important; }
-h5 { font-size: 1.149rem !important; }
-h6 { font-size: 1.0rem !important; }
+h1 { font-size: 2.4rem !important; }
+h2 { font-size: 2rem !important; }
+h3 { font-size: 1.741rem !important; }
+h4 { font-size: 1.516rem !important; }
+h5 { font-size: 1.320rem !important; }
+h6 { font-size: 1.149rem !important; }
 
 @layer utilities {
     /* Firefox */
