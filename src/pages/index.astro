@@ -109,7 +109,7 @@ const benefits = [
 	</section>
 
 	<!-- Programs Section -->
-	<section class="py-16 bg-bg">
+	<section class="py-16 sm:py-32 bg-bg">
 		<div class="content">
 			<SectionHeading
 				title="Programy na výber"
@@ -130,15 +130,16 @@ const benefits = [
 	</section>
 
 	<!-- Peace of mind Section -->
-	<section class="section-green">
+	<section class="py-16 sm:py-32 bg-cover bg-primary bg-no-repeat bg-center relative" style={{ backgroundImage: `url('${bgabout.src}')` }}>
 		<div class="content grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-			<div>
-				<h2 class="text-bg mb-1">Váš pobyt hladko a bez starostí</h2>
-				<div class="underline-accent bg-tint"></div>
-				<p class="text-bg/90 mb-6">
-					Zálezí nám na vašej pohode, a preto zabezpečujeme plný servis spojený s výletom. Od zabezpečenia dopravy až po starostlivosť o deti počas celej cesty.
-				</p>
-				<a href="/informacie/zakladne-informacie/" class="btn-primary">Viac o výhodách</a>
+			<div class="flex flex-col space-y-4">
+				<SectionHeading
+					title="Váš pobyt hladko a bez starostí"
+					subtitle="Zálezí nám na vašej pohode, a preto zabezpečujeme plný servis spojený s výletom. Od zabezpečenia dopravy až po starostlivosť o deti počas celej cesty."
+					align='left'
+					light
+				/>
+				<a href="/informacie/zakladne-informacie/" class="btn-primary w-max">Viac o výhodách</a>
 			</div>
 			<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
 				{benefits.map(benefit => (
