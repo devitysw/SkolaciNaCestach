@@ -7,6 +7,7 @@ import ProgramCard from '../components/ProgramCard.astro';
 import SlovakiaMap from '../components/SlovakiaMap.astro';
 import { trips, extraPrograms } from '../data/trips';
 import heroPhoto from '../assets/hero-photo.webp';
+import BenefitsCard from '../components/BenefitsCard.astro';
 
 import bgMap from "../assets/bg/map.svg";
 import bgtrips from "../assets/bg/trips.svg";
@@ -17,19 +18,16 @@ import bush2 from "../assets/bush2.svg";
 import mountains from "../assets/mountains.svg";
 import decor2 from "../assets/decor-arrows.svg";
 import kids from "../assets/kids.png";
+import bus from "../assets/bus.svg";
+import insurance from "../assets/insurance.svg";
+import medic from "../assets/medic.svg";
+import present from "../assets/present.svg";
+import ski from "../assets/ski.svg";
+import teacher from "../assets/teacher.svg";
 
 import { map } from 'astro:schema';
 
 const featuredTrips = trips.slice(0, 6);
-
-const benefits = [
-	{ icon: 'account_balance_wallet', label: 'Transparentný účet' },
-	{ icon: 'directions_bus', label: 'Doprava' },
-	{ icon: 'card_giftcard', label: 'Bonus pre triedy' },
-	{ icon: 'verified_user', label: 'Poistenie' },
-	{ icon: 'hiking', label: 'Skúsený sprievodca' },
-	{ icon: 'checklist', label: 'Overené zariadenia' },
-];
 ---
 
 <Layout
@@ -139,19 +137,19 @@ const benefits = [
 			<div class="flex flex-col space-y-4">
 				<SectionHeading
 					title="Váš pobyt hladko a bez starostí"
-					subtitle="Zálezí nám na vašej pohode, a preto zabezpečujeme plný servis spojený s výletom. Od zabezpečenia dopravy až po starostlivosť o deti počas celej cesty."
+					subtitle="Záleží nám na Vašej pohode, a preto zabezpečujeme plný servis spojený s Vašim výletom. Od zdravotníka, cez dopravu na a z miesta výletu až po výhodné ceny pri vyššom počte žiakov."
 					align='left'
 					light
 				/>
-				<a href="/informacie/zakladne-informacie/" class="btn-primary w-max">Viac o výhodách</a>
+				<a href="/informacie/zakladne-informacie/" class="btn-primary w-max mx-auto md:mx-0">Viac o výhodách</a>
 			</div>
 			<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-				{benefits.map(benefit => (
-					<div class="bg-white/10 rounded-lg p-4 text-center">
-						<span class="material-symbols-rounded text-tint text-3xl mb-2 block">{benefit.icon}</span>
-						<p class="text-xs text-bg/90 font-semibold">{benefit.label}</p>
-					</div>
-				))}
+				<BenefitsCard label="pedagogický dozor" icon={teacher.src} />
+				<BenefitsCard label="doprava" icon={bus.src} />
+				<BenefitsCard label="bonus pre školy" icon={present.src} />
+				<BenefitsCard label="zdravotník" icon={medic.src} />
+				<BenefitsCard label="lyžiarske kurzy" icon={ski.src} />
+				<BenefitsCard label="poistenie" icon={insurance.src} />
 			</div>
 		</div>
 	</section>

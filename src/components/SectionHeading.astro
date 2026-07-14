@@ -10,11 +10,11 @@ const { title, subtitle, align = 'center', light = false } = Astro.props;
 const isCenter = align === 'center';
 ---
 
-<div class={isCenter ? 'text-center' : 'text-left'}>
+<div class={isCenter ? 'text-center' : 'text-center md:text-left'}>
 	<h1 class={`title ${light ? 'text-bg' : 'text-primary'}`}>{title}</h1>
-	<div class={`underline-accent ${isCenter ? 'mx-auto' : ''} ${light ? 'bg-tint' : ''}`}></div>
+	<div class={`underline-accent ${isCenter ? 'mx-auto' : 'mx-auto md:mx-0'} ${light ? 'bg-tint' : ''}`}></div>
 	{subtitle && (
-		<p class={`mb-8 ${isCenter ? 'max-w-2xl mx-auto' : ''} ${light ? 'text-bg/90' : 'text-text/80'}`}>
+		<p class={`mb-8 max-w-2xl mx-auto ${isCenter ? '' : 'md:max-w-none md:mx-0'} ${light ? 'text-bg/90' : 'text-text/80'}`}>
 			{subtitle}
 		</p>
 	)}
