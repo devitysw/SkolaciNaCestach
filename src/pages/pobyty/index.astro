@@ -4,6 +4,10 @@ import Hero from '../../components/Hero.astro';
 import TripCard from '../../components/TripCard.astro';
 import { trips } from '../../data/trips';
 
+import bgtrips from "../../assets/bg/trips.svg";
+import decor2 from "../../assets/decor-arrows.svg";
+import decor from "../../assets/decor-bush.svg";
+
 const prirodaTrips = trips.filter(t => t.type === 'priroda');
 const lyziarskeTrips = trips.filter(t => t.type === 'lyziarske');
 const turistickeTrips = trips.filter(t => t.type === 'turisticky');
@@ -13,30 +17,31 @@ const turistickeTrips = trips.filter(t => t.type === 'turisticky');
 	title="Pobyty"
 	description="Vyberte si zo škôl v prírode, lyžiarskych a turistických kurzov v overených zariadeniach po celom Slovensku – Vysoké a Nízke Tatry, Stredné Slovensko a ďalšie regióny."
 >
-	<Hero
-		title="Vyberte si ten pravý výlet"
-		subtitle="Čakajú na vás zariadenia vhodné na školy v prírode, lyžiarske a turistické kurzy."
-	/>
 
-	<section class="py-12 bg-bg bg-topo">
+	<section class="pb-12 bg-contain bg-repeat bg-center relative" style={{ backgroundImage: `url('${bgtrips.src}')` }}>
+		<Hero
+			title="Vyberte si ten pravý výlet"
+			subtitle="Čakajú na vás zariadenia vhodné na školy v prírode, lyžiarske a turistické kurzy."
+		/>
+
 		<div class="content">
 			<!-- Filter Tabs -->
-			<div class="flex flex-wrap gap-2 mb-12 justify-center" id="trip-tabs">
+			<div class="flex flex-wrap gap-2 mb-12 justify-center w-full border-b-2 border-tint" id="trip-tabs">
 				<button
 					data-target="priroda"
-					class="tab-btn px-6 py-3 font-bold rounded-full transition-colors bg-tint text-white"
+					class="tab-btn px-6 py-3 font-bold rounded-t-xl transition-colors bg-tint text-white"
 				>
 					Školy v prírode
 				</button>
 				<button
 					data-target="lyziarske"
-					class="tab-btn px-6 py-3 font-bold rounded-full transition-colors bg-secondary/50 text-primary"
+					class="tab-btn px-6 py-3 font-bold rounded-t-xl transition-colors bg-secondary/50 text-primary"
 				>
 					Lyžiarske kurzy
 				</button>
 				<button
 					data-target="turisticky"
-					class="tab-btn px-6 py-3 font-bold rounded-full transition-colors bg-secondary/50 text-primary"
+					class="tab-btn px-6 py-3 font-bold rounded-t-xl transition-colors bg-secondary/50 text-primary"
 				>
 					Turistické kurzy
 				</button>
@@ -94,6 +99,8 @@ const turistickeTrips = trips.filter(t => t.type === 'turisticky');
 				<button class="w-10 h-10 flex items-center justify-center bg-secondary/40 hover:bg-secondary/60 text-primary rounded-full transition-colors">›</button>
 			</div>
 		</div>
+		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
+		<img src={decor2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
 	</section>
 </Layout>
 

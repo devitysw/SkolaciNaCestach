@@ -24,6 +24,7 @@ import medic from "../assets/medic.svg";
 import present from "../assets/present.svg";
 import ski from "../assets/ski.svg";
 import teacher from "../assets/teacher.svg";
+import bghero from "../assets/bg/hero.svg";
 
 import { map } from 'astro:schema';
 
@@ -34,13 +35,15 @@ const featuredTrips = trips.slice(0, 6);
 	title="Domov"
 	description="Školáci na cesty organizuje školy v prírode a lyžiarske kurzy pre základné školy na Slovensku. Kvalitné ubytovanie, strava a individuálny prístup ku každej triede."
 >
-	<Hero
-		title="Zážitkové učenie mimo školských lavíc"
-		subtitle="Kompletná organizácia školských výletov a pobytov s individuálnym prístupom."
-		cta={{ text: 'Ponuka výletov', href: '/pobyty/' }}
-		graphic={heroPhoto.src}
-		imageAlt="Deti na školskom výlete"
-	/>
+	<div class="bg-bg relative overflow-hidden bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('${bghero.src}')` }}>	
+		<Hero
+			title="Zážitkové učenie mimo školských lavíc"
+			subtitle="Kompletná organizácia školských výletov a pobytov s individuálnym prístupom."
+			cta={{ text: 'Ponuka výletov', href: '/pobyty/' }}
+			graphic={heroPhoto.src}
+			imageAlt="Deti na školskom výlete"
+		/>
+	</div>
 
 	<!-- Regions Section -->
 	<section class="py-16 sm:py-32 bg-contain bg-primary bg-repeat bg-center relative" style={{ backgroundImage: `url('${bgMap.src}')` }}>

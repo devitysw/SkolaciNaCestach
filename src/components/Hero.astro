@@ -16,11 +16,10 @@ interface Props {
 const { title, subtitle, cta, image, images, graphic, imageAlt = '' } = Astro.props;
 const hasVisual = Boolean(image || graphic || (images && images.length > 0));
 
-import bg from "../assets/bg/hero.svg";
 ---
 
-<div class="bg-bg relative overflow-hidden bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('${bg.src}')` }}>
-	<div class={`content py-14 md:py-20 relative z-10 ${hasVisual ? 'grid grid-cols-1 lg:grid-cols-2 gap-10 items-center' : 'text-center max-w-3xl mx-auto'}`}>
+
+<div class={`content py-14 md:py-20 relative z-10 ${hasVisual ? 'grid grid-cols-1 lg:grid-cols-2 gap-10 items-center' : 'text-center max-w-3xl mx-auto'}`}>
 		<div class={hasVisual ? 'order-2 lg:order-1 text-center lg:text-left' : ''}>
 			<h1 class="title text-primary">{title}</h1>
 			<div class={`underline-accent ${hasVisual ? 'mx-auto lg:mx-0' : 'mx-auto'}`}></div>
@@ -94,4 +93,3 @@ import bg from "../assets/bg/hero.svg";
 			</div>
 		)}
 	</div>
-</div>
