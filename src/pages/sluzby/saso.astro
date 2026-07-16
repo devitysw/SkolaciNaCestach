@@ -1,6 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+import hero from "../../assets/saso-foto.png";
+import illustration from "../../assets/saso-full.png";
+import bgTrip from "../../assets/bg/trip-det.svg";
+import decor2 from "../../assets/decor-arrows.svg";
+import decor from "../../assets/decor-bush.svg";
 ---
 
 <Layout
@@ -11,27 +18,28 @@ import Hero from '../../components/Hero.astro';
 		title="Program so Šašom"
 		subtitle="Neopakovateľnú show s naším úžasným Šašom!"
 		cta={{ text: 'Mám záujem', href: '/kontakt/' }}
-		image="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&h=450&fit=crop"
+		graphic={hero.src}
 		imageAlt="Šašo pri detskom predstavení"
 	/>
 
 	<section class="section-mint">
-		<div class="content max-w-3xl mx-auto text-center">
-			<span class="material-symbols-rounded text-primary text-4xl mb-4 block">theater_comedy</span>
+		<div class="content max-w-3xl mx-auto text-center flex flex-col space-y-4">
+			<img src={illustration.src} alt="Ilustrácia detí ktoré tancujú." class="w-full"/>
 			<p class="text-text/90">
-				Je to fantastický detský zabávač, ktorý šašovaním zabaví naraz deti aj dospelých. Šašo bude počas jednoduchej ale strhujúcej scénky loviť s deťmi Nema, Dory až po žraloka, alebo predstaví pštrosa so šteklivými nohami, či papagája Tukana, skákajúceho Flipa, zajka Daka, ktorého sa Šašo snaží prevychovať k slušnosti, alebo pre deti odmoderuje karneval s promenádou a diskotékou.
+				Je to fantastický detský zabávač, ktorý šašovaním zabaví naraz deti aj  dospelých. Šašo bude počas jednoduchej ale strhujúcej scénky loviť s  deťmi Nema, Dory až po žraloka, alebo predstaví pštrosa so šteklivými  nohami, či papagája Tukana, skákajúceho Flipa, zajka Daka, ktorého sa  Šašo snaží prevychovať k slušnosti, alebo pre deti odmoderuje karneval s promenádou a diskotékou.
 			</p>
 		</div>
 	</section>
 
-	<section class="py-16 bg-white bg-topo text-center">
-		<div class="content max-w-2xl mx-auto">
-			<h2 class="text-primary mb-1">Cena programu</h2>
-			<div class="underline-accent mx-auto mb-6"></div>
-			<p class="text-text/80 mb-8">
-				Predstavenia sa dajú kombinovať. Cenu Vám v prípade záujmu stanovíme na základe počtu detí a vzdialenosti do miesta pobytu.
-			</p>
-			<a href="/kontakt/" class="btn-primary">Mám záujem</a>
+	<section class="py-16 sm:py-32 bg-cover bg-no-repeat bg-bottom relative" style={{ backgroundImage: `url('${bgTrip.src}')` }}>
+		<div class="content mx-auto flex flex-col space-y-4">
+			<SectionHeading
+				title="Cena programu"
+				subtitle="Predstavenia sa dajú kombinovať. Cenu Vám v prípade záujmu stanovíme na základe počtu detí a vzdialenosti do miesta pobytu."
+			/>
+			<a href="/kontakt/" class="btn-primary w-max mx-auto">Mám záujem</a>
 		</div>
+		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
+		<img src={decor2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
 	</section>
 </Layout>
