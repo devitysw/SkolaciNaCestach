@@ -4,6 +4,17 @@ import SectionHeading from '../../components/SectionHeading.astro';
 import ProgramCard from '../../components/ProgramCard.astro';
 import { trips, extraPrograms } from '../../data/trips';
 
+import present from "../../assets/present.svg";
+import bgTrip from "../../assets/bg/trip-det.svg";
+import bgtrips from "../../assets/bg/trips.svg";
+import decor2 from "../../assets/decor-arrows.svg";
+import decor from "../../assets/decor-bush.svg";
+import bush from "../../assets/bush2.svg";
+import mountains from "../../assets/mountains.svg";
+import kidForest from "../../assets/kid1.png";
+import kidSkiing from "../../assets/kid2.png";
+import kidHiking from "../../assets/kid3.png";
+
 export function getStaticPaths() {
 	return trips.map(trip => ({
 		params: { id: trip.id },
@@ -30,9 +41,17 @@ const whatsIncluded = trip.included.map((item: string) => ({
 	icon: includedIcons[item] ?? 'check_circle',
 }));
 
+const sightseeingOptions = [
+	'Turistické chodníky a náučné chodníky',
+	'Rozhľadne s výhľadom do okolia',
+	'Miestne kultúrne pamiatky a hrady',
+	'Prírodné rezervácie a vodopády',
+	'Športové aktivity v prírode',
+];
+
 const tripOptions = [
 	{
-		icon: 'forest',
+		icon: kidForest.src,
 		title: 'Škola v prírode',
 		group: '1 skupina 25 - 35 detí',
 		dates: trip.type === 'priroda' ? trip.dates : 'máj - jún',
@@ -40,7 +59,7 @@ const tripOptions = [
 		originalPrice: trip.type === 'priroda' ? trip.originalPrice : undefined,
 	},
 	{
-		icon: 'downhill_skiing',
+		icon: kidSkiing.src,
 		title: 'Lyžiarsky kurz',
 		group: '1 skupina 25 - 35 detí',
 		dates: trip.type === 'lyziarske' ? trip.dates : 'december - február',
@@ -48,7 +67,7 @@ const tripOptions = [
 		originalPrice: trip.type === 'lyziarske' ? trip.originalPrice : undefined,
 	},
 	{
-		icon: 'hiking',
+		icon: kidHiking.src,
 		title: 'Turistický kurz',
 		group: '1 skupina 25 - 35 detí',
 		dates: trip.type === 'turisticky' ? trip.dates : 'máj - október',
@@ -59,21 +78,21 @@ const tripOptions = [
 ---
 
 <Layout title={trip.name} description={trip.description} image={trip.image}>
-	<div class="relative h-72 md:h-96 overflow-hidden">
-		<img src={trip.image} alt={trip.name} class="w-full h-full object-cover" loading="eager" fetchpriority="high" />
-		<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-		<div class="content absolute inset-0 flex items-center">
-			<div class="bg-white/95 rounded-xl p-6 max-w-md shadow-lg">
-				<h1 class="text-primary mb-2">{trip.name}</h1>
-				<p class="text-sm text-text/80">{trip.description}</p>
+	<div class=" bg-cover bg-no-repeat bg-center relative" style={{ backgroundImage: `url('${trip.image}')` }}>
+		<div class="content py-24">
+			<div class="bg-white/95 rounded-lg p-8 w-full max-w-md shadow-lg">
+				<h1 class="text-primary">{trip.name}</h1>
+				<div class="underline-accent"></div>
+				<p class="text-text/80">{trip.description}</p>
 			</div>
 		</div>
 	</div>
 
-	<section class="py-12 bg-white">
+	<section class="pt-12 bg-cover bg-no-repeat bg-top" style={{ backgroundImage: `url('${bgTrip.src}')` }}>
 		<div class="content grid grid-cols-1 md:grid-cols-3 gap-10">
 			<div class="md:col-span-2">
-				<h2 class="text-primary mb-4">Informácie o pobyte</h2>
+				<h1 class="text-primary">Informácie o pobyte</h1>
+				<div class="underline-accent"></div>
 				<p class="text-text/80 mb-6">{trip.description}</p>
 
 				<div class="space-y-3 mb-8">
@@ -108,61 +127,119 @@ const tripOptions = [
 						))}
 					</ul>
 				</div>
+
+				<div class="card p-6 mt-6">
+					<h3 class="text-primary mb-4">Termíny a ceny</h3>
+					<div class="overflow-x-auto">
+						<table class="w-full text-left">
+							<thead>
+								<tr class="border-b border-secondary/60 text-sm text-text/60">
+									<th class="py-2 pr-4 font-medium">Termín</th>
+									<th class="py-2 pr-4 font-medium">Cena</th>
+									<th class="py-2 font-medium"></th>
+								</tr>
+							</thead>
+							<tbody>
+								{trip.terms.map((term: {dates: string, price: number, originalPrice?: number, status: string}) => (
+									<tr class="border-b border-secondary/30 last:border-0">
+										<td class={`py-3 pr-4 whitespace-nowrap ${term.status === 'full' ? 'line-through text-text/40' : 'text-text/80'}`}>
+											{term.dates}
+										</td>
+										<td class={`py-3 pr-4 whitespace-nowrap ${term.status === 'full' ? 'line-through text-text/40' : ''}`}>
+											{term.originalPrice && (
+												<span class="text-text/40 line-through mr-2">{term.originalPrice}&nbsp;€</span>
+											)}
+											<span class={term.status === 'full' ? '' : term.originalPrice ? 'text-tint font-bold' : 'font-bold text-primary'}>
+												{term.price}&nbsp;€
+											</span>
+										</td>
+										<td class="py-3">
+											{term.status === 'few-spots' && (
+												<span class="badge-tint text-xs whitespace-nowrap">Posledné miesta</span>
+											)}
+											{term.status === 'full' && (
+												<span class="bg-text/10 text-text/50 text-xs px-3 py-1 rounded-xl whitespace-nowrap">Obsadené</span>
+											)}
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 
 			<div class="space-y-6">
-				<div class="section-mint rounded-xl p-6 text-center">
-					<span class="material-symbols-rounded text-tint text-3xl mb-2 block">card_giftcard</span>
-					<h3 class="text-primary mb-1">Bonus pre školy</h3>
-					<p class="text-sm text-text/80">Získajte bonus 130€ za každé 13. dieťa.</p>
-				</div>
-
-				<div>
-					<h3 class="text-primary mb-3">Fotogaléria</h3>
-					<div class="grid grid-cols-3 gap-2">
-						{trip.gallery.map((photo: string) => (
-							<img src={photo} alt={trip.name} class="w-full h-20 object-cover rounded-lg" loading="lazy" />
-						))}
+				<div class="border border-tint bg-tint/10 p-4 rounded-xl flex flex-row gap-2 items-center">
+					<img src={present.src} class="h-20" />
+					<div class="flex flex-col gap-1">
+						<h3 class="text-primary">Bonus pre školy</h3>
+						<p class="text-sm text-text/80">Získajte bonus 130€ za každé 13. dieťa.</p>
 					</div>
 				</div>
 
-				{trip.mapUrl && (
+				<div class="flex flex-col space-y-10 p-4 rounded-xl bg-secondary/50">
 					<div>
-						<h3 class="text-primary mb-3">Poloha</h3>
-						<div class="w-full h-52 rounded-xl overflow-hidden">
-							<iframe
-								class="w-full h-full"
-								style="border:0"
-								loading="lazy"
-								src={trip.mapUrl}
-							></iframe>
+						<h1 class="text-primary">Fotogaléria</h1>
+						<div class="underline-accent"></div>
+						<div class="grid grid-cols-3 gap-2">
+							{trip.gallery.map((photo: string, i: number) => (
+								<button type="button" class="gallery-thumb cursor-pointer" data-index={i} aria-label="Zobraziť fotografiu na celú obrazovku">
+									<img src={photo} alt={trip.name} class="w-full h-20 object-cover rounded-sm" loading="lazy" />
+								</button>
+							))}
 						</div>
 					</div>
-				)}
+
+					{trip.mapUrl && (
+						<div>
+							<h1 class="text-primary">Poloha</h1>
+							<div class="underline-accent"></div>
+							<div class="w-full h-52 rounded-xl overflow-hidden">
+								<iframe
+									class="w-full h-full"
+									style="border:0"
+									loading="lazy"
+									src={trip.mapUrl}
+								></iframe>
+							</div>
+						</div>
+					)}
+				</div>
 			</div>
+		</div>
+		<div class="sm:flex flex-row justify-between hidden pt-8">
+			<img src={decor.src} alt="" class="h-24 md:h-32 w-auto">
+			<img src={decor2.src} alt="" class="h-24 md:h-32 w-auto">
 		</div>
 	</section>
 
 	<section class="section-green">
 		<div class="content">
-			<h2 class="text-bg text-center mb-1">Možnosti výletov</h2>
-			<div class="underline-accent bg-tint mx-auto mb-8"></div>
+			<SectionHeading title="Možnosti pobytov" light={true} />
 
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 				{tripOptions.map(option => (
 					<div class="bg-white/10 rounded-xl p-6">
 						<div class="flex items-center gap-3 mb-3">
-							<span class="material-symbols-rounded text-tint text-3xl">{option.icon}</span>
-							<h3 class="text-bg">{option.title}</h3>
+							<img src={option.icon} alt="" class="h-30 w-30 object-cover" />
+							<h1 class="text-bg">{option.title}</h1>
 						</div>
-						<div class="text-sm text-bg/90 space-y-1 mb-3">
-							<p>{option.group}</p>
-							<p>{option.dates}</p>
+						<div class=" text-bg/90 space-y-1 mb-3">
+							<div class="flex items-center gap-2">
+								<span class="material-symbols-rounded text-xl">groups</span>
+								<span>{option.group}</span>
+							</div>
+							<div class="flex items-center gap-2">
+								<span class="material-symbols-rounded text-xl">calendar_today</span>
+								<span>{option.dates}</span>
+							</div>
 						</div>
 						<div class="flex items-center gap-2">
+							<span class="material-symbols-rounded text-xl">account_balance_wallet</span>
 							{option.originalPrice ? (
 								<>
-									<span class="text-bg/50 line-through text-sm">{option.originalPrice}&nbsp;€</span>
+									<span class="text-bg/50 line-through ">{option.originalPrice}&nbsp;€</span>
 									<span class="badge-tint">{option.price}&nbsp;€</span>
 								</>
 							) : (
@@ -175,43 +252,139 @@ const tripOptions = [
 		</div>
 	</section>
 
-	<section class="py-16 bg-bg">
+	<section class="bg-cover bg-no-repeat bg-center relative" style={{ backgroundImage: `url('${bgTrip.src}')` }}>
+		<div class="py-16 sm:py-32">
+			<div class="content">
+				<SectionHeading
+					title="Programy na výber"
+					subtitle="Doplňte si pobyt o niektorý z našich obľúbených programov."
+				/>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					{extraPrograms.map(program => (
+						<ProgramCard
+							name={program.name}
+							description={program.shortDescription}
+							image={program.image}
+							link={program.link}
+						/>
+					))}
+				</div>
+			</div>
+		</div>
+
+		<div class="sm:flex flex-row justify-between hidden pt-8">
+			<img src={mountains.src} alt="" class="h-24 md:h-32 w-auto">
+			<img src={bush.src} alt="" class="h-24 md:h-32 w-auto">
+		</div>
+	</section>
+
+	<section class="section-green">
 		<div class="content">
 			<SectionHeading
-				title="Programy na výber"
-				subtitle="Doplňte si pobyt o niektorý z našich obľúbených programov."
+				title="Možnosti výletov"
+				light
 			/>
 
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-				{extraPrograms.map(program => (
-					<ProgramCard
-						name={program.name}
-						description={program.shortDescription}
-						image={program.image}
-						link={program.link}
-					/>
-				))}
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-8">
+				<div>
+					<ul class="space-y-4">
+						{sightseeingOptions.map((item) => (
+							<li class="flex items-center gap-3">
+								<span class="material-symbols-rounded text-secondary text-2xl shrink-0">landscape</span>
+								<span class="text-bg/90">{item}</span>
+							</li>
+						))}
+					</ul>
+					<p class="text-bg/90 mt-8">
+						S organizáciou výletov Vám radi pomôžeme. V prípade akýchkoľvek otázok nás neváhajte kontaktovať.
+					</p>
+				</div>
+				<div class="flex justify-center md:justify-end">
+					<img src={kidHiking.src} alt="" class="w-full max-w-xs sm:max-w-sm h-auto object-contain" />
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="section-green text-center">
-		<div class="content">
-			<h2 class="text-bg mb-1">Rezervujte si pobyt ešte dnes</h2>
-			<div class="underline-accent bg-tint mx-auto mb-6"></div>
-			<p class="text-bg/90 max-w-xl mx-auto mb-8">
-				Ak si ešte nie ste istí výberom, urobte si nezáväznú rezerváciu. Radi vám poskytneme všetky potrebné informácie a spolu nájdeme riešenie, ktoré bude pre vás aj vaše deti ideálne.
-			</p>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a href="tel:+421907205144" class="btn-primary">
-					<span class="material-symbols-rounded">call</span>
-					+421 907 205 144
-				</a>
-				<a href="mailto:rezervacie@skolacinacesty.sk" class="btn-outline">
-					<span class="material-symbols-rounded">mail</span>
-					rezervacie@skolacinacesty.sk
-				</a>
+
+	<section class="bg-cover bg-no-repeat bg-top relative" style={{ backgroundImage: `url('${bgTrip.src}')` }}>
+		<div class="py-16 sm:py-32">
+			<div class="content">
+				<SectionHeading
+						title="Rezervujte si pobyt ešte dnes"
+						subtitle="Ak si ešte nie ste istí výberom, urobte si nezáväznú rezerváciu. Radi vám poskytneme všetky potrebné informácie a spolu nájdeme riešenie, ktoré bude pre vás aj vaše deti ideálne."
+				/>
+					
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<a href="tel:+421907205144" class="btn-primary">
+						<span class="material-symbols-rounded">call</span>
+						+421 907 205 144
+					</a>
+					<a href="mailto:rezervacie@skolacinacesty.sk" class="btn-outline">
+						<span class="material-symbols-rounded">mail</span>
+						rezervacie@skolacinacesty.sk
+					</a>
+				</div>
 			</div>
 		</div>
 	</section>
+
+	<div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/90 items-center justify-center">
+		<button type="button" id="lightbox-close" class="absolute top-4 right-4 text-white text-4xl material-symbols-rounded cursor-pointer" aria-label="Zavrieť">close</button>
+		<button type="button" id="lightbox-prev" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white text-5xl material-symbols-rounded cursor-pointer" aria-label="Predchádzajúca fotografia">chevron_left</button>
+		<img id="lightbox-image" src="" alt="" class="h-[96vh] w-[96vw] object-contain rounded-lg" />
+		<button type="button" id="lightbox-next" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white text-5xl material-symbols-rounded cursor-pointer" aria-label="Nasledujúca fotografia">chevron_right</button>
+	</div>
+
+	<script define:vars={{ gallery: trip.gallery }}>
+		const thumbs = document.querySelectorAll('.gallery-thumb');
+		const lightbox = document.getElementById('lightbox');
+		const lightboxImage = document.getElementById('lightbox-image');
+		const closeBtn = document.getElementById('lightbox-close');
+		const prevBtn = document.getElementById('lightbox-prev');
+		const nextBtn = document.getElementById('lightbox-next');
+		let currentIndex = 0;
+
+		function fullSize(url) {
+			return url.replace(/([?&])w=\d+&h=\d+/, '$1w=1600&h=1200');
+		}
+
+		function show(index) {
+			currentIndex = (index + gallery.length) % gallery.length;
+			lightboxImage.src = fullSize(gallery[currentIndex]);
+		}
+
+		function openLightbox(index) {
+			show(index);
+			lightbox.classList.remove('hidden');
+			lightbox.classList.add('flex');
+			document.body.classList.add('overflow-hidden');
+		}
+
+		function closeLightbox() {
+			lightbox.classList.add('hidden');
+			lightbox.classList.remove('flex');
+			document.body.classList.remove('overflow-hidden');
+		}
+
+		thumbs.forEach((thumb) => {
+			thumb.addEventListener('click', () => openLightbox(Number(thumb.dataset.index)));
+		});
+
+		closeBtn.addEventListener('click', closeLightbox);
+		nextBtn.addEventListener('click', () => show(currentIndex + 1));
+		prevBtn.addEventListener('click', () => show(currentIndex - 1));
+
+		lightbox.addEventListener('click', (e) => {
+			if (e.target === lightbox) closeLightbox();
+		});
+
+		document.addEventListener('keydown', (e) => {
+			if (lightbox.classList.contains('hidden')) return;
+			if (e.key === 'Escape') closeLightbox();
+			if (e.key === 'ArrowRight') show(currentIndex + 1);
+			if (e.key === 'ArrowLeft') show(currentIndex - 1);
+		});
+	</script>
 </Layout>

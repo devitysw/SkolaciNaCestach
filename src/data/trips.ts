@@ -1,3 +1,14 @@
+import animacnyImg from '../assets/animacny.svg';
+import sasoImg from '../assets/saso.svg';
+import skolkariqImg from '../assets/skolkariq.svg';
+
+export interface Term {
+  dates: string;
+  price: number;
+  originalPrice?: number;
+  status: 'available' | 'few-spots' | 'full';
+}
+
 export interface Trip {
   id: string;
   name: string;
@@ -14,6 +25,7 @@ export interface Trip {
   gallery: string[];
   mapUrl?: string;
   included: string[];
+  terms: Term[];
   /** Position on the Slovakia map (SlovakiaMap.astro), in the 0-800 x / 0-412 y viewBox space. */
   mapPosition: { x: number; y: number };
 }
@@ -42,6 +54,11 @@ export const trips: Trip[] = [
     ],
     mapUrl: 'https://maps.google.com/maps?q=Bansk%C3%A1+Bel%C3%A1,+Slovensko&output=embed',
     included: ['Ubytovanie', 'Strava', 'Pedagogický dozor', 'Poistenie', 'Vecné darčeky'],
+    terms: [
+      { dates: '12.5. – 16.5.2026', price: 135, originalPrice: 155, status: 'available' },
+      { dates: '19.5. – 23.5.2026', price: 135, originalPrice: 155, status: 'few-spots' },
+      { dates: '26.5. – 30.5.2026', price: 155, status: 'full' }
+    ],
     mapPosition: { x: 266.2, y: 224.6 }
   },
   {
@@ -62,6 +79,11 @@ export const trips: Trip[] = [
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
     included: ['Ubytovanie', 'Strava', 'Pedagogický dozor', 'Poistenie'],
+    terms: [
+      { dates: '4.5. – 8.5.2026', price: 155, status: 'available' },
+      { dates: '11.5. – 15.5.2026', price: 155, status: 'few-spots' },
+      { dates: '18.5. – 22.5.2026', price: 155, status: 'full' }
+    ],
     mapPosition: { x: 419.7, y: 117.9 }
   },
   {
@@ -82,6 +104,11 @@ export const trips: Trip[] = [
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
     included: ['Ubytovanie', 'Strava', 'Pedagogický dozor', 'Poistenie'],
+    terms: [
+      { dates: '4.5. – 8.5.2026', price: 155, status: 'few-spots' },
+      { dates: '11.5. – 15.5.2026', price: 155, status: 'available' },
+      { dates: '25.5. – 29.5.2026', price: 155, status: 'available' }
+    ],
     mapPosition: { x: 375.1, y: 118.5 }
   },
   {
@@ -102,6 +129,11 @@ export const trips: Trip[] = [
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
     included: ['Ubytovanie', 'Polpenzia', 'Skipas', 'Sprievodca'],
+    terms: [
+      { dates: '7.12. – 11.12.2026', price: 155, status: 'available' },
+      { dates: '11.1. – 15.1.2027', price: 155, status: 'full' },
+      { dates: '8.2. – 12.2.2027', price: 155, status: 'few-spots' }
+    ],
     mapPosition: { x: 398.6, y: 173.2 }
   },
   {
@@ -123,6 +155,11 @@ export const trips: Trip[] = [
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
     included: ['Ubytovanie', 'Plná penzia', 'Skipas', 'Sprievodca'],
+    terms: [
+      { dates: '14.12. – 18.12.2026', price: 135, originalPrice: 155, status: 'available' },
+      { dates: '18.1. – 22.1.2027', price: 135, originalPrice: 155, status: 'few-spots' },
+      { dates: '15.2. – 19.2.2027', price: 155, status: 'full' }
+    ],
     mapPosition: { x: 434.3, y: 151.7 }
   },
   {
@@ -144,6 +181,11 @@ export const trips: Trip[] = [
     ],
     mapUrl: 'https://maps.google.com/maps?q=Liptovsk%C3%BD+Hr%C3%A1dok,+Slovensko&output=embed',
     included: ['Ubytovanie', 'Polpenzia', 'Pedagogický dozor', 'Poistenie'],
+    terms: [
+      { dates: '6.4. – 10.4.2026', price: 135, originalPrice: 155, status: 'available' },
+      { dates: '7.9. – 11.9.2026', price: 135, originalPrice: 155, status: 'few-spots' },
+      { dates: '14.9. – 18.9.2026', price: 155, status: 'full' }
+    ],
     mapPosition: { x: 362.0, y: 152.7 }
   },
   {
@@ -164,6 +206,11 @@ export const trips: Trip[] = [
     ],
     mapUrl: 'https://maps.google.com/maps?q=%C5%A0trbsk%C3%A9+Pleso,+Slovensko&output=embed',
     included: ['Ubytovanie', 'Strava', 'Sprievodca', 'Poistenie'],
+    terms: [
+      { dates: '18.5. – 22.5.2026', price: 145, status: 'available' },
+      { dates: '15.6. – 19.6.2026', price: 145, status: 'few-spots' },
+      { dates: '5.10. – 9.10.2026', price: 145, status: 'available' }
+    ],
     mapPosition: { x: 470, y: 100 }
   }
 ];
@@ -183,7 +230,7 @@ export const extraPrograms: ExtraProgram[] = [
     name: 'Animačný program',
     shortDescription: 'Profesionálni animátori pre zábavu a vzdelanie',
     description: 'Vyberte si našich osvedčených animátorov s pestrým animačným programom.',
-    image: './src/assets/animacny.svg',
+    image: animacnyImg.src,
     link: '/sluzby/animacny-program/'
   },
   {
@@ -191,7 +238,7 @@ export const extraPrograms: ExtraProgram[] = [
     name: 'Program so Šašom',
     shortDescription: 'Neopakovateľná show s naším úžasným Šašom',
     description: 'Je to fantastický detský zabávač, ktorý šašovaním zabaví naraz deti aj dospelých.',
-    image: './src/assets/saso.svg',
+    image: sasoImg.src,
     link: '/sluzby/saso/'
   },
   {
@@ -199,7 +246,7 @@ export const extraPrograms: ExtraProgram[] = [
     name: 'Spoločenské hry so Škôlkariqom',
     shortDescription: 'Nezabudnuteľný zážitok, ktorý zabaví aj rozvinie',
     description: 'Nezabudnuteľný zážitok, ktorý deti nielen zabaví, ale aj rozvinie.',
-    image: './src/assets/skolkariq.svg',
+    image: skolkariqImg.src,
     link: '/sluzby/skolkariq/'
   }
 ];
