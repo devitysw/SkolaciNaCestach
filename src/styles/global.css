@@ -154,8 +154,16 @@ button, a, .smooth-show {
 /* Cards
 --------------------------------------------------*/
 
+.card, .card-offwhite {
+    @apply rounded-xl border overflow-hidden;
+}
+
 .card {
-    @apply bg-white rounded-xl border border-secondary/60 overflow-hidden;
+    @apply bg-white border-secondary/60;
+}
+
+.card-offwhite {
+    @apply bg-bg border-primary;
 }
 
 .badge-tint {

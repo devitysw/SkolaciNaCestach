@@ -1,11 +1,21 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+import hero from "../../assets/animacny-foto.png";
+import illustration from "../../assets/animacny-full.png";
+import bgTrip from "../../assets/bg/trip-det.svg";
+import twoDays from "../../assets/2.png";
+import threeDays from "../../assets/3.png";
+import fourDays from "../../assets/4.png";
+import decor2 from "../../assets/decor-arrows.svg";
+import decor from "../../assets/decor-bush.svg";
 
 const pricing = [
-	{ number: '2', color: 'text-pink-500', label: 'Dvojdňový', price: '32 €/dieťa' },
-	{ number: '3', color: 'text-blue-500', label: 'Trojdňový', price: '38 €/dieťa' },
-	{ number: '4', color: 'text-tint', label: 'Štvordňový', price: '45 €/dieťa' },
+	{ number: '2', image: twoDays, label: 'Dvojdňový', price: '32 €/dieťa' },
+	{ number: '3', image: threeDays, label: 'Trojdňový', price: '38 €/dieťa' },
+	{ number: '4', image: fourDays, label: 'Štvordňový', price: '45 €/dieťa' },
 ];
 ---
 
@@ -15,34 +25,35 @@ const pricing = [
 >
 	<Hero
 		title="Animátori"
-		subtitle="Svoje programy stavajú na profesionálnych animátoroch, kvalitnom obsahu a individuálnom, láskavom prístupe k deťom."
+		subtitle="Svoje programy stavajú na profesionálnych animátoroch, kvalitnom obsahu a individuálnom, láskavom prístupe k deťom. Vytvárajú prostredie, kde sa deti cítia prijaté, motivované a šťastné."
 		cta={{ text: 'Mám záujem', href: '/kontakt/' }}
-		image="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=600&h=450&fit=crop"
+		graphic={hero.src}
 		imageAlt="Animátori s deťmi"
 	/>
 
 	<section class="section-mint">
-		<div class="content max-w-3xl mx-auto text-center">
-			<span class="material-symbols-rounded text-primary text-4xl mb-4 block">celebration</span>
+		<div class="content max-w-3xl mx-auto text-center flex flex-col space-y-4">
+			<img src={illustration.src} alt="Ilustrácia detí ktoré tancujú." class="w-full"/>
 			<p class="text-text/90">
-				Vyberte si našich osvedčených animátorov s pestrým animačným programom, každoročne obmieňajúcou sa tématikou a činnosťami, ktoré deti obľubujú. Animátori sa budú deťom venovať podľa zvoleného počtu dní od 14:00 – 17:00 hod. a po prestávke od 19:00 – 21:00 hod.
+				Vyberte si našich osvedčených animátorov s pestrým animačným  programom, každoročne obmieňajúcou sa tématikou a činnosťami, ktoré deti obľubujú.
+				<br>
+				Animátori sa budú deťom venovať podľa zvoleného počtu dní od 14:00 - 17:00 hod. a po prestávke od 19:00 - 21:00 hod.
 			</p>
 		</div>
 	</section>
 
-	<section class="py-16 bg-white bg-topo text-center">
+	<section class="py-16 sm:py-32 text-center bg-cover bg-no-repeat bg-top relative" style={{ backgroundImage: `url('${bgTrip.src}')` }}>
 		<div class="content max-w-2xl mx-auto">
-			<h2 class="text-primary mb-1">Cena programu</h2>
-			<div class="underline-accent mx-auto mb-6"></div>
-			<p class="text-text/80 mb-10">
-				Animačný program (pri počte 40 detí 2 animátori) spolu s materiálovým zabezpečením a darčekom Vám zabezpečíme za príplatok.
-			</p>
+			<SectionHeading
+				title="Cena programu"
+				subtitle="Animačný program (pri počte 40 detí 2 animátori) spolu s materiálovým zabezpečením a darčekom Vám zabezpečíme za príplatok."
+			/>
 
 			<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
 				{pricing.map(tier => (
-					<div class="card p-6">
-						<div class={`text-5xl font-bold mb-2 ${tier.color}`}>{tier.number}</div>
-						<h3 class="text-primary uppercase mb-2">{tier.label}</h3>
+					<div class="card-offwhite p-6">
+						<img src={tier.image.src} alt={tier.number} class="h-16 w-auto mx-auto mb-2" />
+						<h2 class="text-primary uppercase mb-2">{tier.label}</h2>
 						<div class="underline-accent mx-auto mb-2"></div>
 						<p class="text-text/80">{tier.price}</p>
 					</div>
@@ -51,5 +62,7 @@ const pricing = [
 
 			<a href="/kontakt/" class="btn-primary">Mám záujem</a>
 		</div>
+		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
+		<img src={decor2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
 	</section>
 </Layout>
