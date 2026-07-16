@@ -1,20 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+import bgTrip from "../assets/bg/trip-det.svg";
+import decor from "../assets/decor-bush.svg";
 ---
 
 <Layout
 	title="Kontakt"
-	description="Kontaktujte Školáci na cesty – radi vám poradíme so školou v prírode alebo lyžiarskym kurzom. Telefón, e-mail a kontaktný formulár."
+	description="Kontaktujte Školáci na cesty - radi vám poradíme so školou v prírode alebo lyžiarskym kurzom. Telefón, e-mail a kontaktný formulár."
 >
-	<section class="py-12 bg-white bg-topo">
+	<section class="py-16 sm:py-32 bg-cover bg-no-repeat bg-top relative" style={{ backgroundImage: `url('${bgTrip.src}')` }}>
 		<div class="content grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 			<div>
-				<h1 class="text-primary mb-1">Máte otázky alebo potrebujete viac informácií?</h1>
-				<div class="underline-accent"></div>
-				<p class="text-text/80 mb-8 max-w-md">
-					Neváhajte nás kontaktovať – radi vám poradíme a spoločne nájdeme riešenie. Stačí nám napísať alebo zavolať a my sa Vám čo najskôr ozveme späť.
-				</p>
-
+				<SectionHeading
+					title="Máte otázky alebo potrebujete viac informácií?"
+					subtitle='Neváhajte nás kontaktovať - radi vám poradíme a spoločne nájdeme  riešenie. Stačí nám napísať alebo zavolať a my sa Vám čo najskôr ozveme  späť.'
+					align='left'
+				/>
 				<div class="flex flex-col gap-4 max-w-sm">
 					<a href="tel:+421907205144" class="btn-outline">
 						<span class="material-symbols-rounded">call</span>
@@ -86,5 +89,6 @@ import Layout from '../layouts/Layout.astro';
 				</form>
 			</div>
 		</div>
+		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
 	</section>
 </Layout>
