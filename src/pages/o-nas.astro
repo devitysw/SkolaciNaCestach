@@ -3,13 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
 import heroPhoto from '../assets/hero-photo.webp';
+import bgTrip from "../assets/bg/trip-det.svg";
+import decor from "../assets/decor-bush.svg";
 ---
 
 <Layout
 	title="O nás"
 	description="30-ročné skúsenosti s organizovaním detských rekreácií. Spoľahlivý partner pre školy pri organizovaní pobytov, ktorý deťom priblíži krásy Slovenska."
 >
-	<section class="py-12 bg-white bg-topo">
+	<section class="py-16 sm:py-32 bg-cover bg-no-repeat bg-top relative" style={{ backgroundImage: `url('${bgTrip.src}')` }}>
 		<div class="content grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<div>
 				<SectionHeading
@@ -34,5 +36,6 @@ import heroPhoto from '../assets/hero-photo.webp';
 
 			<img src={heroPhoto.src} class="w-3/4 mx-auto" />
 		</div>
+		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
 	</section>
 </Layout>
