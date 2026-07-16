@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+import heroPhoto from '../assets/hero-photo.webp';
 ---
 
 <Layout
@@ -9,17 +12,19 @@ import Layout from '../layouts/Layout.astro';
 	<section class="py-12 bg-white bg-topo">
 		<div class="content grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 			<div>
-				<h1 class="text-primary mb-1">O nás</h1>
-				<div class="underline-accent"></div>
+				<SectionHeading
+					title="O nás"
+					align='left'
+				/>
 				<div class="text-text/80 space-y-4">
 					<p>
-						Myšlienka organizovania detských rekreácií pokračuje. Vzácne 30-ročné skúsenosti si berieme od tých najlepších – CK Detská rekreácia a pridávame niečo nové. Veríme, že pre školákov i pre Vás zaujímavé a prínosné.
+						Myšlienka organizovania detských rekreácií pokračuje. Vzácne 30-ročné skúsenosti si berieme od tých najlepších - CK Detská rekreácia a pridávame niečo nové. Veríme, že pre školákov i pre Vás zaujímavé a  prínosné.
 					</p>
 					<p>
-						Želáme si, aby deti spoznávali najprv krásy Slovenska, predtým ako spoznajú svet. Zároveň by sme ich chceli motivovať k láske k prírode i pohybu v nej.
+						Želáme si, aby deti spoznávali najprv krásy Slovenska, predtým ako spoznajú  svet. Zároveň by sme ich chceli motivovať k láske k prírode i pohybu v  nej.
 					</p>
 					<p>
-						Vážime si prácu pedagógov, pre deti chceme to najlepšie, preto sme starostlivo vyberali, čo Vám ponúkneme – kvalitné ubytovanie a stravu ako základ, na výber aktivity, ktoré školákov nielen zabavia. Pobyt pre každú školu je pre nás jedinečný, preto Vám poskytneme individuálny prístup a možnosť prispôsobiť ho na mieru podľa Vašich požiadaviek.
+						Vážime si prácu pedagógov, pre  deti chceme to najlepšie, preto sme starostlivo vyberali, čo Vám  ponúkneme - kvalitné ubytovanie a stravu ako základ, na výber aktivity,  ktoré školákov nielen zabavia. Pobyt pre každú školu je pre nás  jedinečný, preto Vám poskytneme individuálny prístup a možnosť  prispôsobiť ho na mieru podľa Vašich požiadaviek.
 					</p>
 					<p>
 						Veríme, že sa pre Vás staneme spoľahlivým partnerom v organizovaní pobytov pre Vašich školákov.
@@ -27,30 +32,7 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 			</div>
 
-			<div class="relative h-80 md:h-96">
-				<img
-					src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=500&h=550&fit=crop"
-					alt="Deti na výlete"
-					class="absolute left-0 top-8 w-3/5 h-64 md:h-72 object-cover rounded-xl shadow-lg -rotate-2"
-					loading="eager"
-					fetchpriority="high"
-				/>
-				<img
-					src="https://images.unsplash.com/photo-1526676537331-7747bf8278fc?w=400&h=300&fit=crop"
-					alt="Aktivita s deťmi"
-					class="absolute right-0 top-0 w-2/5 h-36 object-cover rounded-xl shadow-lg rotate-2"
-					loading="eager"
-				/>
-				<img
-					src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?w=400&h=300&fit=crop"
-					alt="Deti pri hre"
-					class="absolute right-4 bottom-0 w-2/5 h-36 object-cover rounded-xl shadow-lg -rotate-1"
-					loading="eager"
-				/>
-				<span class="material-symbols-rounded absolute left-2 bottom-2 bg-secondary text-primary rounded-full w-11 h-11 flex items-center justify-center shadow-md text-2xl">
-					explore
-				</span>
-			</div>
+			<img src={heroPhoto.src} class="w-3/4 mx-auto" />
 		</div>
 	</section>
 </Layout>
