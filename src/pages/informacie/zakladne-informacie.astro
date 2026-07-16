@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import bgTrip from "../../assets/bg/trip-det.svg";
+import decor2 from "../../assets/decor-arrows.svg";
+import decor from "../../assets/decor-bush.svg";
 
 const infoBlocks = [
 	{
@@ -34,17 +37,21 @@ const infoBlocks = [
 	title="Základné informácie pre školy"
 	description="Ceny, bonusy, poistenie, pedagogický dozor a doprava – všetko, čo potrebujete vedieť pred objednaním školy v prírode alebo lyžiarskeho kurzu."
 >
-	<Hero title="Základné informácie pre školy" />
 
-	<section class="py-16 bg-white bg-topo">
-		<div class="content grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-			{infoBlocks.map(block => (
-				<div>
-					<h3 class="text-primary mb-1">{block.title}</h3>
-					<div class="underline-accent"></div>
-					<p class="text-text/80">{block.text}</p>
-				</div>
-			))}
+	<section class="pb-16 sm:pb-32 bg-cover bg-no-repeat bg-center relative" style={{ backgroundImage: `url('${bgTrip.src}')` }}>
+		<div class="content flex flex-col space-y-4">
+			<Hero title="Základné informácie pre školy" />
+			<div class=" grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+				{infoBlocks.map(block => (
+					<div>
+						<h2 class="text-text mb-1">{block.title}</h2>
+						<div class="underline-accent"></div>
+						<p class="text-text/80">{block.text}</p>
+					</div>
+				))}
+			</div>
 		</div>
+		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
+		<img src={decor2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
 	</section>
 </Layout>
