@@ -6,7 +6,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.skolacinacesty.sk',
+  site: 'https://devitysw.github.io',
+  base: '/SkolaciNaCestach/',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]

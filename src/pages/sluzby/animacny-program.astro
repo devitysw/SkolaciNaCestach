@@ -26,7 +26,7 @@ const pricing = [
 	<Hero
 		title="Animátori"
 		subtitle="Svoje programy stavajú na profesionálnych animátoroch, kvalitnom obsahu a individuálnom, láskavom prístupe k deťom. Vytvárajú prostredie, kde sa deti cítia prijaté, motivované a šťastné."
-		cta={{ text: 'Mám záujem', href: '/kontakt/' }}
+		cta={{ text: 'Mám záujem', href: `${import.meta.env.BASE_URL}kontakt/` }}
 		graphic={hero.src}
 		imageAlt="Animátori s deťmi"
 	/>
@@ -60,7 +60,7 @@ const pricing = [
 				))}
 			</div>
 
-			<a href="/kontakt/" class="btn-primary">Mám záujem</a>
+			<a href={`${import.meta.env.BASE_URL}kontakt/`} class="btn-primary">Mám záujem</a>
 		</div>
 		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
 		<img src={decor2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">

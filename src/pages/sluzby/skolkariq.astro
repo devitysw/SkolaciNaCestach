@@ -20,7 +20,7 @@ import decor from "../../assets/decor-bush.svg";
 	<Hero
 		title="Spoločenské hry so Škôlkariqom"
 		subtitle="Nezabudnuteľný zážitok, ktorý ich nielen zabaví, ale aj rozvinie"
-		cta={{ text: 'Mám záujem', href: '/kontakt/' }}
+		cta={{ text: 'Mám záujem', href: `${import.meta.env.BASE_URL}kontakt/` }}
 		graphic={hero.src}
 		imageAlt="Deti hrajúce spoločenskú hru"
 	/>
@@ -80,7 +80,7 @@ import decor from "../../assets/decor-bush.svg";
 				title="Cena programu"
 				subtitle="Cena je individuálna – v prípade záujmu Vám ju stanovíme na základe počtu detí a vzdialenosti do miesta pobytu a po potvrdení dostupnosti potrebného počtu lektoriek."
 			/>
-			<a href="/kontakt/" class="btn-primary w-max mx-auto">Mám záujem</a>
+			<a href={`${import.meta.env.BASE_URL}kontakt/`} class="btn-primary w-max mx-auto">Mám záujem</a>
 		</div>
 		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
 		<img src={decor2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">

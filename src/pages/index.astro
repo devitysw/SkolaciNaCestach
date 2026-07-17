@@ -39,7 +39,7 @@ const featuredTrips = trips.slice(0, 6);
 		<Hero
 			title="Zážitkové učenie mimo školských lavíc"
 			subtitle="Kompletná organizácia školských výletov a pobytov s individuálnym prístupom."
-			cta={{ text: 'Ponuka výletov', href: '/pobyty/' }}
+			cta={{ text: 'Ponuka výletov', href: `${import.meta.env.BASE_URL}pobyty/` }}
 			graphic={heroPhoto.src}
 			imageAlt="Deti na školskom výlete"
 		/>
@@ -82,7 +82,7 @@ const featuredTrips = trips.slice(0, 6);
 			</div>
 
 			<div class="text-center mt-10">
-				<a href="/pobyty/" class="btn-secondary">
+				<a href={`${import.meta.env.BASE_URL}pobyty/`} class="btn-secondary">
 					Pozrieť všetky pobyty
 				</a>
 			</div>
@@ -144,7 +144,7 @@ const featuredTrips = trips.slice(0, 6);
 					align='left'
 					light
 				/>
-				<a href="/informacie/zakladne-informacie/" class="btn-primary w-max mx-auto md:mx-0">Viac o výhodách</a>
+				<a href={`${import.meta.env.BASE_URL}informacie/zakladne-informacie/`} class="btn-primary w-max mx-auto md:mx-0">Viac o výhodách</a>
 			</div>
 			<div class="hidden md:grid grid-cols-2 sm:grid-cols-3 gap-4">
 				<BenefitsCard label="pedagogický dozor" icon={teacher.src} />
