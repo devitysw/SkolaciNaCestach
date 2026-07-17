@@ -69,6 +69,48 @@ button, a, .smooth-show {
     cursor: pointer;
 }
 
+/* Motion
+--------------------------------------------------*/
+.motion-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1), transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+.motion-ready [data-reveal="left"] { transform: translateX(-28px); }
+.motion-ready [data-reveal="right"] { transform: translateX(28px); }
+.motion-ready [data-reveal].is-visible { opacity: 1; transform: translate(0, 0); }
+
+.hero-copy > * {
+    opacity: 0;
+    animation: rise-in 650ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-copy > :nth-child(2) { animation-delay: 100ms; }
+.hero-copy > :nth-child(3) { animation-delay: 180ms; }
+.hero-copy > :nth-child(4) { animation-delay: 260ms; }
+.hero-visual { opacity: 0; animation: scale-in 800ms 120ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.hero-float { animation: gentle-float 5s 1s ease-in-out infinite; }
+.decor-float { animation: gentle-float 6s ease-in-out infinite; }
+.decor-float-reverse { animation: gentle-float 7s 500ms ease-in-out infinite reverse; }
+.decor-float-offset { animation: gentle-float-offset 6s ease-in-out infinite; }
+
+@keyframes rise-in {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scale-in {
+    from { opacity: 0; transform: scale(0.94) rotate(1deg); }
+    to { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-9px) rotate(0.7deg); }
+}
+@keyframes gentle-float-offset {
+    0%, 100% { transform: translateY(50%) rotate(0); }
+    50% { transform: translateY(calc(50% - 9px)) rotate(0.7deg); }
+}
+
 /* Animated underline
 --------------------------------------------------*/
 
@@ -154,8 +196,9 @@ button, a, .smooth-show {
 /* Cards
 --------------------------------------------------*/
 
-.card, .card-offwhite {
+.card, .card-offwhite, .motion-card {
     @apply rounded-xl border overflow-hidden;
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease, border-color 300ms ease;
 }
 
 .card {
@@ -164,6 +207,18 @@ button, a, .smooth-show {
 
 .card-offwhite {
     @apply bg-bg border-primary;
+}
+
+.card img { transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+@media (hover: hover) and (pointer: fine) {
+    .card:hover, .card-offwhite:hover, .motion-card:hover {
+        transform: translateY(-7px);
+        border-color: color-mix(in srgb, var(--color-tint) 65%, transparent);
+        box-shadow: rgba(14, 25, 78, 0.12) 0 18px 35px;
+    }
+    .card:hover img { transform: scale(1.045); }
+    .card:hover .underline-accent { width: 5.5rem; }
 }
 
 .badge-tint {
@@ -177,4 +232,17 @@ button, a, .smooth-show {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23718C69' stroke-width='1' opacity='0.12'%3E%3Ccircle cx='90' cy='300' r='40'/%3E%3Ccircle cx='90' cy='300' r='65'/%3E%3Ccircle cx='90' cy='300' r='90'/%3E%3Ccircle cx='320' cy='90' r='35'/%3E%3Ccircle cx='320' cy='90' r='60'/%3E%3Ccircle cx='320' cy='90' r='85'/%3E%3Cpath d='M0 180 Q100 140 200 180 T400 180'/%3E%3Cpath d='M0 220 Q100 260 200 220 T400 220'/%3E%3C/g%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 500px 500px;
+}
+
+.underline-accent { transition: width 350ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+    .motion-ready [data-reveal] { opacity: 1; transform: none; }
 }

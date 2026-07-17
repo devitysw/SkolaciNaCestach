@@ -20,7 +20,7 @@ const hasVisual = Boolean(image || graphic || (images && images.length > 0));
 
 
 <div class={`content py-14 md:py-20 relative z-10 ${hasVisual ? 'grid grid-cols-1 lg:grid-cols-2 gap-10 items-center' : 'text-center max-w-3xl mx-auto'}`}>
-		<div class={hasVisual ? 'order-2 lg:order-1 text-center lg:text-left' : ''}>
+		<div class={`hero-copy ${hasVisual ? 'order-2 lg:order-1 text-center lg:text-left' : ''}`}>
 			<h1 class="title text-primary">{title}</h1>
 			<div class={`underline-accent ${hasVisual ? 'mx-auto lg:mx-0' : 'mx-auto'}`}></div>
 
@@ -36,7 +36,7 @@ const hasVisual = Boolean(image || graphic || (images && images.length > 0));
 		</div>
 
 		{images && images.length > 0 && (
-			<div class="order-1 lg:order-2 relative h-72 md:h-80">
+			<div class="hero-visual order-1 lg:order-2 relative h-72 md:h-80">
 				<img
 					src={images[0]}
 					alt={imageAlt}
@@ -67,11 +67,11 @@ const hasVisual = Boolean(image || graphic || (images && images.length > 0));
 		)}
 
 		{graphic && (
-			<div class="order-1 lg:order-2 relative">
+			<div class="hero-visual order-1 lg:order-2 relative">
 				<img
 					src={graphic}
 					alt={imageAlt}
-					class="w-full h-auto max-w-md mx-auto lg:max-w-none"
+					class="hero-float w-full h-auto max-w-md mx-auto lg:max-w-none"
 					loading="eager"
 					fetchpriority="high"
 				/>
@@ -79,7 +79,7 @@ const hasVisual = Boolean(image || graphic || (images && images.length > 0));
 		)}
 
 		{image && !images && !graphic && (
-			<div class="order-1 lg:order-2 relative h-64 md:h-80">
+			<div class="hero-visual order-1 lg:order-2 relative h-64 md:h-80">
 				<img
 					src={image}
 					alt={imageAlt}

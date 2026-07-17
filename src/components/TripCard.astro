@@ -15,7 +15,7 @@ const isDiscounted = Boolean(originalPrice && originalPrice > pricePerDay);
 import discount from "../assets/discount-badge.svg";
 ---
 
-<div class="card flex flex-col h-full">
+<div class="card flex flex-col h-full" data-reveal>
 	<div class="relative h-60 overflow-hidden">
 		<img src={image} alt={name} class="w-full h-full object-cover" loading="lazy" />
 		{isDiscounted && (

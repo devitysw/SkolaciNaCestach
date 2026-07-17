@@ -56,7 +56,7 @@ const featuredTrips = trips.slice(0, 6);
 
 			<SlovakiaMap />
 		</div>
-		<img src={mapDecor.src} alt="Ilustrácia mapy" class="w-18 sm:w-24 md:w-48 h-auto absolute bottom-0 right-4 sm:right-8 translate-y-1/2">
+		<img src={mapDecor.src} alt="Ilustrácia mapy" class="decor-float-offset w-18 sm:w-24 md:w-48 h-auto absolute bottom-0 right-4 sm:right-8">
 	</section>
 
 	<!-- Featured Trips Section -->
@@ -87,8 +87,8 @@ const featuredTrips = trips.slice(0, 6);
 				</a>
 			</div>
 		</div>
-		<img src={decor.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
-		<img src={decor2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
+		<img src={decor.src} alt="" class="decor-float hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
+		<img src={decor2.src} alt="" class="decor-float-reverse hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
 	</section>
 
 	<!-- Info Section -->
@@ -100,7 +100,7 @@ const featuredTrips = trips.slice(0, 6);
 				align='left'
 				light
 			/>
-			<div>
+			<div data-reveal="right">
 				<img
 					src={kids.src}
 					alt="Školáci na výlete"
@@ -130,8 +130,8 @@ const featuredTrips = trips.slice(0, 6);
 				))}
 			</div>
 		</div>
-		<img src={mountains.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
-		<img src={bush2.src} alt="" class="hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
+		<img src={mountains.src} alt="" class="decor-float hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 -left-2">
+		<img src={bush2.src} alt="" class="decor-float-reverse hidden sm:block sm:h-24 md:h-32 w-auto absolute -bottom-2 right-0">
 	</section>
 
 	<!-- Peace of mind Section -->
@@ -165,7 +165,7 @@ const featuredTrips = trips.slice(0, 6);
 				subtitle="Prihláste sa na odber noviniek, aby ste sa dozvedeli o nových ponukách a výhodných výletoch ako prví."
 			/>
 
-			<form class="flex flex-col gap-3 w-full max-w-2xl">
+			<form class="flex flex-col gap-3 w-full max-w-2xl" data-reveal>
 				<input
 					type="email"
 					placeholder="Vaša e-mailová adresa"

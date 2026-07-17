@@ -30,7 +30,7 @@ const VIEW_H = 412;
 					aria-label={`Zobraziť informácie o ${trip.name}`}
 					aria-expanded="false"
 				>
-					<svg width="32" height="40" viewBox="0 0 24 32" class="drop-shadow-md hover:scale-110 transition-transform">
+					<svg width="32" height="40" viewBox="0 0 24 32" class="map-pin drop-shadow-md hover:scale-110 transition-transform" style={`--pin-delay: ${(trips.indexOf(trip) % 6) * 140}ms`}>
 						<path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20c0-6.6-5.4-12-12-12z" class="fill-tint" stroke="white" stroke-width="1.5" />
 						<circle cx="12" cy="12" r="5" fill="white" />
 					</svg>
@@ -64,6 +64,20 @@ const VIEW_H = 412;
 		transform: translate(var(--popup-shift-x), 4px);
 		transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
 		pointer-events: none;
+	}
+
+	.map-pin {
+		animation: pin-bounce 2.8s var(--pin-delay) ease-in-out infinite;
+		transform-origin: 50% 100%;
+	}
+
+	@keyframes pin-bounce {
+		0%, 14%, 100% { transform: translateY(0); }
+		7% { transform: translateY(-5px); }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.map-pin { animation: none; }
 	}
 
 	.pin-wrapper:focus-within .map-popup,
